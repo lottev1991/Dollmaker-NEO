@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0px;
   width: 249px;
-  height: 400px; /* Make it one pixel taller because of the border, which we don't want in our image */
+  height: 400px;
   z-index: 0;
 }
 
