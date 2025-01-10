@@ -126,9 +126,6 @@ function displayBase($path, $ignore) {
 					<?php displayBase("base/RightEye", $ignore); ?>
 				</div>
 		</div>	
-		<div id="toolButtons" class="ui-corner-all">
-
-		</div>
 		<div id="piecesArea" title="You can drag pieces from this area.">
 			<?php
 			$folders = scandir("images/");
