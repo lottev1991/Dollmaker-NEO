@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 /* I made the dollmaker nice and responsive, too. */
 #dollmaker_container {
   position: relative;
-  max-width: 960px;
+  max-width: 915px;
   margin: auto;
   line-height: 1em;
   left: 5px;
