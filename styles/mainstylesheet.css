@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
 #piecesArea {
   position: relative;
   left: 264px;
-  width: 654px;
+  width: 585px;
 }
 
 /*Positioning for tabs area*/
@@ -255,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
 #tabsbar li a {
   /* !!!!!IE7 */
   padding: 3px 10px 4px;
-  font-size: 17px;
+  font-size: 15px;
   text-decoration: none;
   transition: 0.3s;
 }
@@ -276,19 +276,3 @@ h1, h2, h3, h4, h5, h6 {
 #piecesArea img {
   margin: 0 10px 10px 0;
 }
-
-/*-------------------------------------------------------------------*/
-/* Anti Right-click */
-/* Commented out by default since I don't care for it. Feel free to uncomment it for your own project. */
-/* #anti-rightclick {
-  display:none;
-  width: 170px;
-  height:  30px;
-  line-height: 1.2;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 3px 3px 3px 15px;
-  position: absolute;
-  z-index: 9999;
-}
- */
