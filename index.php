@@ -21,9 +21,6 @@
 
 	<!-- This is the drag-and-drop script (and pretty much everything else). -->
 	<script type="text/javascript" src="scripts/drag.js"></script>
-	<!--remove the following line if you do not want anti-rightclick on images-->
-	<!-- Commented this out by default because I really don't care. Uncomment it for your own project if you like. -->
-	<!-- <script type="text/javascript" src="scripts/anti-rightclick.js"></script> -->
 </head>
 <?php
 $ignore = array(".", "..", ".htaccess", ".DS_Store");
@@ -169,11 +166,6 @@ function displayBase($path, $ignore) {
 			?>
 		</div>
 		<!--PiecesArea-->
-
-		<!--The message for anti-rightclick-->
-		<!-- Commented out by default because I dom't care for it. Feel free to uncomment for your own project if you want. -->
-		<!-- <div id="anti-rightclick">Please do not steal the images from this dollmaker</div>	 -->
-
 	</div><!--container-->
 </body>
 </html>
