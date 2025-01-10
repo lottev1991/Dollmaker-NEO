@@ -128,9 +128,6 @@ function displayBase($path, $ignore) {
 					<h3>Right eye:</h3>
 					<?php displayBase("base/RightEye", $ignore); ?>
 				</div>
-		</div>	
-		<div id="toolButtons" class="ui-corner-all">
-
 		</div>
 		<div id="piecesArea" title="You can drag pieces from this area.">
 			<?php
