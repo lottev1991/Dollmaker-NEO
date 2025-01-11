@@ -19,6 +19,10 @@ function prepareDoll() {
 	$("#bodyArea").css({
 		"background-color": "transparent",
 		"border-radius": "0px", /* Resets border radius so the rounded corners are not visible on the final image */
+
+		/** This is necessary on mobile apparently, to move the border out of sight. */
+		"width": "250px",
+		"height": "401px",
 	});
 	$(".ui-tabs-hide").css({
 		"visibility": "visible",
@@ -30,6 +34,8 @@ function revertDoll() {
 	$("#bodyArea").css({
 		"background-color": "",
 		"border-radius": "",
+		"width": "",
+		"height": "",
 	});
 	$(".ui-tabs-hide").css({
 		"visibility": "",
