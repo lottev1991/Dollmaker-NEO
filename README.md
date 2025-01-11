@@ -1,4 +1,10 @@
 # Dollmaker NEO
+---
+
+***IMPORTANT NOTE FOR MOBILE USERS:* Currently, the exported images on mobile *will* be blurry. I have tried everything and I don't think there's a real solution. I'm very sorry about this and I wish it was different too.** Desktop should be fine though (just make sure your zoom is at a "round" number, e.g. 100%, 200%, 300%, etc.).
+
+---
+
 **Dollmaker NEO** is a script (or rather, a set of scripts) to bring drag & drop dress up games (or dollmakers, as we often called them) to the modern age, without making them any less fun. If anything, it's the opposite, as the process of dollmaking has been made much easier than it used to be.
 
 This project is a fork of Ninique's original [Dollmaker script](https://github.com/ninique/Dollmaker-Script); I simply modernized and styled it. Special thanks to her, because if I hadn't looked at her code, I would've never learned PHP.
