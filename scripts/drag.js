@@ -42,9 +42,6 @@ function revertDoll() {
 	});
 }
 $(document).ready(function () {
-	$("#noscript").css({
-		'visibiliy': 'collapse'
-	})
 	//Makes the pieces draggable & sets options
 	$('#piecesArea').find('img').draggable({
 		stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. I got rid of the "trailing" that Ninique's original script had because I don't care for it (and most of the dollmakers I used to play with back in the day didn't have it). I couldn't get it to work with jQuery UI v1.8.24 anyway for what it's worth, and I don't consider that a loss. */
