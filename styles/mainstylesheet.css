@@ -255,7 +255,8 @@ h1, h2, h3, h4, h5, h6 {
 #tabsbar li a {
   /* !!!!!IE7 */
   padding: 3px 10px 4px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: bold;
   text-decoration: none;
   transition: 0.3s;
 }
