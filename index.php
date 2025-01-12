@@ -105,7 +105,7 @@ function displayBase($path, $ignore) {
 				<!-- Button to download a 100x100 avatar of the doll. -->
 				<button id="downloadAvi" title="Click here to download a 100x100 avatar of your doll.">Download avatar (100x100)</button>
 
-								<!-- Button to toggle fullscreen. -->
+				<!-- Button to toggle fullscreen. -->
 				<button id="fullscreen" title="Click here to toggle between fullscreen and windowed mode. (On desktop, you can also press F11.)" onclick="toggleFullScreen()">Toggle fullscreen</button>
 				<!-- Button to refresh the page, resetting all positions. -->
 				<button id="reset" title="Click here to reset the dollmaker to its default settings.">Reset dollmaker</button>
