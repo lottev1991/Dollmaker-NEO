@@ -18,7 +18,7 @@
 	<!-- We're using FileSaver and html2canvas to save the finished doll as an image. -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" crossorigin="anonymous"></script>
 	
-	<!-- We're using a slightly modified fork on html2canvas now (fixes tab flashing and blurred pixels).
+	<!-- We're using a slightly modified fork of html2canvas now (fixes tab flashing and blurred pixels).
 	Special thanks to @toohtik on GitHub for the visible child element fix! (https://github.com/toohtik)  -->
 	<script type="text/javascript" src="scripts/vendor/html2canvas.min.js" crossorigin="anonymous"></script>
 
@@ -108,7 +108,7 @@ function displayBase($path, $ignore) {
 				<!-- Button to download a 100x100 avatar of the doll. -->
 				<button id="downloadAvi" title="Click here to download a 100x100 avatar of your doll.">Download avatar (100x100)</button>
 
-								<!-- Button to toggle fullscreen. -->
+				<!-- Button to toggle fullscreen. -->
 				<button id="fullscreen" title="Click here to toggle between fullscreen and windowed mode. (On desktop, you can also press F11.)" onclick="toggleFullScreen()">Toggle fullscreen</button>
 				<!-- Button to refresh the page, resetting all positions. -->
 				<button id="reset" title="Click here to reset the dollmaker to its default settings.">Reset dollmaker</button>
