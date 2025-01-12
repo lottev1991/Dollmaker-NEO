@@ -58,7 +58,7 @@ button:hover {
 }
 
 /* This specifies styles that will affect all the boxes. Change to your own colors!*/
-#bodyArea,#swatchesArea,.ui-tabs-panel,#toolButtons {
+#bodyArea,#swatchesArea,.ui-tabs-panel {
     border: 1px solid #4A00C0;
     background: #D9C0FF;
 }
