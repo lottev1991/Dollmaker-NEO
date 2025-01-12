@@ -1,7 +1,5 @@
 # Dollmaker NEO
 
----
-
 **Dollmaker NEO** is a script (or rather, a set of scripts) to bring drag & drop dress up games (or dollmakers, as we often called them) to the modern age, without making them any less fun. If anything, it's the opposite, as the process of dollmaking has been made much easier than it used to be.
 
 This project is a fork of Ninique's original [Dollmaker script](https://github.com/ninique/Dollmaker-Script); I simply modernized and styled it. Special thanks to her, because if I hadn't looked at her code, I would've never learned PHP.
