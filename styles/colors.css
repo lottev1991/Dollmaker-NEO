@@ -73,18 +73,18 @@ button:hover {
 
 #tabsbar li a {
    border: 1px solid #4A00C0;
-   border-bottom: 2px solid #C4A0FF;
+   border-bottom: 4px solid #C4A0FF;
    background-color: #C4A0FF;
    color: #4A00C0;
 }
 
 /* Tabs hover styling, only for unselected tabs */
 #tabsbar .ui-state-default a:hover {
-    border-bottom: 2px solid #B080FF;
+    border-bottom: 4px solid #B080FF;
     background-color: #B080FF;
 }
 
 #tabsbar .ui-state-active a,#tabsbar .ui-state-active a:hover {
-    border-bottom: 2px solid #D8C0FF;
+    border-bottom: 4px solid #D8C0FF;
     background-color: #D8C0FF;
 }
