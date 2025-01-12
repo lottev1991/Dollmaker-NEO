@@ -90,11 +90,8 @@ function displayBase($path, $ignore) {
 					<li>For easy navigation among the different items, you can click on the <b>tab of your choice</b> at the top of the page.</li>
 					<li>Click on the <b>swatches</b> below to change skin and eye color, as well as the doll background. You choose the eye color per eye, so that you can easily give your doll two different eye colors with any combination of colors.</li>
 					<li>Click on the <b>"Download doll"</b> button below to download your finished doll.
-					<ul class="subBullet">
-							<li><b>NOTE #1:</b> Make sure your browser's zoom level is at a round number (100%, 200%, etc.) otherwise your final doll may get blurry.</li>
-						</ul>
 						<ul class="subBullet">
-							<li><b>NOTE #2:</b> While exporting the final doll, you'll see the doll container background and border disappear for about a second. You will also see the contents of every page tab flickering. This is normal and nothing to worry about; it's all part of the process to prepare and export the final doll.</li>
+							<li><b>NOTE:</b> While exporting the final doll, you'll see the doll container background and border disappear for about a second. This is normal and nothing to worry about; it's all part of the process to prepare and export the final doll.</li>
 						</ul>
 					</li>
 					<li>Click on the <b>"Download avatar (100x100)"</b> button to download a cropped avatar of your doll. (Keep the above note about zoom level in mind!)</li>
