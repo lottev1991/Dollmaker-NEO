@@ -2,11 +2,6 @@
 
 /* Also, I stored all the colors in a separate file. This is because I was originally gonna add theming but it wasn't working out unfortunately. I kept them separate because no way am I adding them all back. */
 
-canvas {
-  width: 249px;
-  height: 400px;
-}
-
 /*----------------------------------------------*/
 /*These are needed for the tab functionality and drag/drop functionality to work*/
 .ui-tabs-hide {
