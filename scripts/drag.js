@@ -17,11 +17,9 @@ function toggleFullScreen() { /* Add full screen toggle. Mostly did this for mob
 	Yes this is all very hacky but you simply need that with html2canvas, at least when it comes to drag & drop pages. */
 function prepareDoll() {
 	$("#bodyArea").css({
-		"background-color": "transparent",
+		"background-color": "transparent", /* Make div background transparent to prepare doll (html2canvas will make it "properly" transparent later, but this removes the color information at least) */
+		"border": "1px solid transparent", /* Make border transparent so it won't show in the final image */
 		"border-radius": "0px", /* Resets border radius so the rounded corners are not visible on the final image */
-	});
-	$(".ui-tabs-hide").css({
-		"visibility": "visible",
 	});
 }
 
@@ -30,11 +28,10 @@ function revertDoll() {
 	$("#bodyArea").css({
 		"background-color": "",
 		"border-radius": "",
-	});
-	$(".ui-tabs-hide").css({
-		"visibility": "",
+		"border": "",
 	});
 }
+
 $(document).ready(function () {
 	//Makes the pieces draggable & sets options
 	$('#piecesArea').find('img').draggable({
@@ -119,6 +116,7 @@ $(document).ready(function () {
 			x: 1,
 			y: 1,
 			scale: 1, /* Renders the final canvas at a zoom level of 1 at all times, otherwise your final image will be zoomed in along with the page and we don't want that.  */
+			imageSmoothingEnabled: false, /* This is a custom setting that I added to my fork of html2canvas. When set to "false", it makes sure the final image remains pixelated no matter the zoom level and/or scaling ("true" is the default and does the opposite). NOTE: I've coded it so that setting "image-rendering: pixelated" and "image-rendering: crisp-edges" in CSS stylesheets will accomplish the same thing.*/
 		}).then(canvas => {
 			canvas.toBlob(function (blob) {
 				/* Revert the CSS of the body div and tabs back to normal. */
@@ -150,6 +148,7 @@ $(document).ready(function () {
 			x: 75,
 			y: 36,
 			scale: 1,
+			imageSmoothingEnabled: false,
 		}).then(canvas => {
 			canvas.toBlob(function (blob) {
 				revertDoll();

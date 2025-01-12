@@ -1,7 +1,4 @@
 # Dollmaker NEO
----
-
-***IMPORTANT NOTE FOR MOBILE USERS:* Currently, the exported images on mobile *will* be blurry. I have tried everything and I don't think there's a real solution. I'm very sorry about this and I wish it was different too.** Desktop should be fine though (just make sure your zoom is at a "round" number, e.g. 100%, 200%, 300%, etc.).
 
 ---
 

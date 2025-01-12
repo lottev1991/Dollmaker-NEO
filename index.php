@@ -17,7 +17,10 @@
 
 	<!-- We're using FileSaver and html2canvas to save the finished doll as an image. -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" crossorigin="anonymous"></script>
+	
+	<!-- We're using a slightly modified fork on html2canvas now (fixes tab flashing and blurred pixels).
+	Special thanks to @toohtik on GitHub for the visible child element fix! (https://github.com/toohtik)  -->
+	<script type="text/javascript" src="scripts/vendor/html2canvas.min.js" crossorigin="anonymous"></script>
 
 	<!-- This is the drag-and-drop script (and pretty much everything else). -->
 	<script type="text/javascript" src="scripts/drag.js"></script>
@@ -170,7 +173,7 @@ function displayBase($path, $ignore) {
 		<!--The message for anti-rightclick-->
 		<!-- Commented out by default because I dom't care for it. Feel free to uncomment for your own project if you want. -->
 		<!-- <div id="anti-rightclick">Please do not steal the images from this dollmaker</div>	 -->
-
 	</div><!--container-->
+
 </body>
 </html>

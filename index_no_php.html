@@ -23,7 +23,10 @@
 	<!-- We're using FileSaver and html2canvas to save the finished doll as an image. -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
 		crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"
+
+	<!-- We're using a slightly modified fork on html2canvas now (fixes tab flashing and blurred pixels).
+		Special thanks to @toohtik on GitHub for the visible child element fix! (https://github.com/toohtik)  -->
+	<script type="text/javascript" src="scripts/vendor/html2canvas.min.js"
 		crossorigin="anonymous"></script>
 
 	<!-- This is the drag-and-drop script (and pretty much everything else). -->

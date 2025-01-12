@@ -2,6 +2,11 @@
 
 /* Also, I stored all the colors in a separate file. This is because I was originally gonna add theming but it wasn't working out unfortunately. I kept them separate because no way am I adding them all back. */
 
+canvas {
+  width: 249px;
+  height: 400px;
+}
+
 /*----------------------------------------------*/
 /*These are needed for the tab functionality and drag/drop functionality to work*/
 .ui-tabs-hide {
@@ -26,7 +31,7 @@
 
 /* General HTML stylings */
 html {
-  image-rendering: pixelated; /* We are working with pixel art (most likely; if you don't you can remove this) so we wan't the page to look pixelated even on zoom-in. This also helps with canvas rendering. */
+  image-rendering: pixelated; /* We are working with pixel art (most likely; if you don't you can remove this) so we wan't the page to look pixelated even on zoom-in. This also helps with canvas rendering (now for real because of my custom html2canvas fork). */
   scroll-behavior: smooth; /* To scroll slowly while dragging, rather than shifting quickly all over the place */
 }
 
@@ -124,8 +129,8 @@ h1, h2, h3, h4, h5, h6 {
 #bodyArea {
   position: absolute;
   top: 0px;
-  width: 250px;
-  height: 401px;
+  width: 249px;
+  height: 400px;
   z-index: 0;
 }
 
