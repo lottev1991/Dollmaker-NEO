@@ -277,3 +277,20 @@ h1, h2, h3, h4, h5, h6 {
 #piecesArea img {
   margin: 0 10px 10px 0;
 }
+
+/*-------------------------------------------------------------------*/
+
+/* Media queries for pixel scaling on mobile (since it's not ever 1:1 or with whole numbers) */
+@media screen and (max-width: 960px) {
+  #skintone {
+    left: 69.5px;
+  }
+
+  #left-eye {
+    left: 109.5px;
+  }
+
+  #right-eye {
+    right: 108.5px;
+  }
+}
