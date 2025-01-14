@@ -26,7 +26,7 @@
 
 /* General HTML stylings */
 html {
-  image-rendering: pixelated; /* We are working with pixel art (most likely; if you don't you can remove this) so we wan't the page to look pixelated even on zoom-in. This also helps with canvas rendering (now for real because of my custom html2canvas fork). */
+  image-rendering: pixelated; /* We are working with pixel art (most likely; if you don't you can remove this) so we want the page to look pixelated even on zoom-in. This also helps with canvas rendering (now for real because of my custom html2canvas fork). */
   scroll-behavior: smooth; /* To scroll slowly while dragging, rather than shifting quickly all over the place */
 }
 
