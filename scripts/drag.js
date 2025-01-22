@@ -17,7 +17,7 @@ function toggleFullScreen() { /* Add full screen toggle. Mostly did this for mob
 	Yes this is all very hacky but you simply need that with html2canvas, at least when it comes to drag & drop pages. */
 function prepareDoll() {
 	$("#bodyArea").css({
-		"background-color": "transparent",
+		"background-color": "transparent", /* Make div background transparent to prepare doll (html2canvas will make it "properly" transparent later, but this removes the color information at least) */
 		"border": "1px solid transparent", /* Make border transparent so it won't show in the final image */
 		"border-radius": "0px", /* Resets border radius so the rounded corners are not visible on the final image */
 	});
@@ -27,17 +27,32 @@ function prepareDoll() {
 function revertDoll() {
 	$("#bodyArea").css({
 		"background-color": "",
-		"border": "",
 		"border-radius": "",
+		"border": "",
 	});
 }
-$(document).ready(function () {
+
+/* Re-implement old "ui-tabs-hide" class. This is to set inactive tabs to "visibility: hidden" and "display: block" instead of "display: none" upon switching, to preserve dragged-out items. */
+(function ($) {
+	$.fn.invisible = function () {
+		return this.each(function () {
+			$(this).addClass("ui-tabs-hide")
+		});
+	};
+	$.fn.visible = function () {
+		return this.each(function () {
+			$(this).removeClass("ui-tabs-hide")
+		});
+	};
+}(jQuery));
+
+$(function () { /* Simplified this in order to future-proof the code */
 	//Makes the pieces draggable & sets options
 	$('#piecesArea').find('img').draggable({
 		stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. I got rid of the "trailing" that Ninique's original script had because I don't care for it (and most of the dollmakers I used to play with back in the day didn't have it). I couldn't get it to work with jQuery UI v1.8.24 anyway for what it's worth, and I don't consider that a loss. */
 		distance: 0, /* I believe this has to do with mouse distance? */
 		containment: "document", /* Makes it so pieces don't get lost off the page while dragging them */
-	});
+	})
 
 	//Sets what happens when you release a piece
 	$("#bodyArea").droppable({
@@ -50,12 +65,21 @@ $(document).ready(function () {
 		//changes current tab to the tab the piece belongs to when dragged out of body area
 		out: function (event, ui) {
 			ui.draggable.removeClass("draggedout");
-			var whichTab = ui.draggable.parent().attr("id");
-			$("#piecesArea").tabs('select', whichTab);
+			var whichTab = ui.draggable.parent().index() - 1; /* Had to change the ID attribute to an index, since that's how it works in jQuery UI nowadays. Since the tab index is zero-based, I had to pass -1 for it to work correctly (it seems to be 1-based by default in jQuery?).
+			Also, the "select" function got renamed to "active" in jQuery UI v1.9 (notice a pattern? lol), which is why it's called that here. The function remains effectively the same. */
+			$("#piecesArea").tabs({
+				active: whichTab
+			});
 		},
 	});
 	//tabs
-	$("#piecesArea").tabs();
+	$("#piecesArea").tabs({
+		/* Apply the custom visibility functions we defined earlier upon tab activation */
+		activate: function (event, ui) {
+			ui.oldPanel.invisible();
+			ui.newPanel.visible();
+		},
+	});
 
 	/* Button for showing and hiding the dollmaker instructions */
 	$("#instrBtn").on("click", function () {
