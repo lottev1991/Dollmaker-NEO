@@ -6,21 +6,21 @@
 	<link id="main-css" rel="stylesheet" type="text/css" href="styles/mainstylesheet.css" charset="utf-8">
 	<link id="colors-css" rel="stylesheet" type="text/css" href="styles/colors.css" charset="utf-8">
 
-	<!-- We are using slightly older versions of jQuery and jQuery UI, but not so old that essential functions break (such as html2canvas). They are newer than the versions Ninique used, however.
-	We have to use these older versions mostly to make tabs work the way we wanted to (with newer versions of jQuery UI, dragged-out pieces disappear along with the tab they're from...).
-	All of this has been tested and works 100% as it should. I strongly recommend you do not change this. -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.8.3.min.js" integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://code.jquery.com/ui/1.8.24/jquery-ui.min.js" integrity="sha256-UOoxwEUqhp5BSFFwqzyo2Qp4JLmYYPTHB8l+1yhZij8=" crossorigin="anonymous"></script>
+	<!-- We are now using the latest versions of jQuery and jQuery UI! I managed to make tabs work the way I wanted them to, so I upgraded everything to keep things nice and up-to-date.
+	All of this has been tested and works 100% as it should (yes, it still does!). Only change these if you know what you're doing! -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
 
-	<!-- Use Touch Punch to make the drag & drop function resonsive to touch input. -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js" crossorigin="anonymous"></script>
+	<!-- Use Touch Punch to make the drag & drop function resonsive to touch input.
+	We're using a more up-to-date fork now, maintained by RWAP software (https://github.com/RWAP). Special thanks to them! -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@rwap/jquery-ui-touch-punch@1.1.5/jquery.ui.touch-punch.min.js" crossorigin="anonymous"></script>
 
 	<!-- We're using FileSaver and html2canvas to save the finished doll as an image. -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" crossorigin="anonymous"></script>
-
+	
 	<!-- We're using a slightly modified fork of html2canvas now (fixes tab flashing and blurred pixels).
 	Special thanks to @toohtik on GitHub for the visible child element fix! (https://github.com/toohtik)  -->
-	<script type="text/javascript" src="scripts/vendor/html2canvas.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lottev1991/html2canvas@1.6.5-custom/dist/html2canvas.min.js" crossorigin="anonymous"></script>
 
 	<!-- This is the drag-and-drop script (and pretty much everything else). -->
 	<script type="text/javascript" src="scripts/drag.js"></script>
@@ -88,7 +88,7 @@ function displayBase($path, $ignore) {
 					<li>Click on the <b>swatches</b> below to change skin and eye color, as well as the doll background. You choose the eye color per eye, so that you can easily give your doll two different eye colors with any combination of colors.</li>
 					<li>Click on the <b>"Download doll"</b> button below to download your finished doll.
 						<ul class="subBullet">
-							<li><b>NOTE:</b> While exporting the final doll, you'll see the doll container background and border disappear for about a second. You will also see the contents of every page tab flickering. This is normal and nothing to worry about; it's all part of the process to prepare and export the final doll.</li>
+							<li><b>NOTE:</b> While exporting the final doll, you'll see the doll container background and border disappear for about a second. This is normal and nothing to worry about; it's all part of the process to prepare and export the final doll.</li>
 						</ul>
 					</li>
 					<li>Click on the <b>"Download avatar (100x100)"</b> button to download a cropped avatar of your doll. (Keep the above note about zoom level in mind!)</li>
@@ -125,7 +125,7 @@ function displayBase($path, $ignore) {
 					<h3>Right eye:</h3>
 					<?php displayBase("base/RightEye", $ignore); ?>
 				</div>
-		</div>	
+		</div>
 		<div id="piecesArea" title="You can drag pieces from this area.">
 			<?php
 			$folders = scandir("images/");
@@ -164,5 +164,6 @@ function displayBase($path, $ignore) {
 		</div>
 		<!--PiecesArea-->
 	</div><!--container-->
+
 </body>
 </html>
