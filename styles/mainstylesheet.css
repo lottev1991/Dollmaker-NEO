@@ -135,8 +135,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Protip: do NOT use 'margin: auto' to center your base image! It might the base image blurry on export. Yes I am speaking from experience, no it was not fun. Use absolute pixels only. */
 #skintone {
   position: absolute;
-  left: 69px;
-  top: 55px;
+  left: 69px !important;
+  top: 55.5px;
   z-index: 0;
 }
 
@@ -144,15 +144,15 @@ h1, h2, h3, h4, h5, h6 {
 /* Set position of left eye */
 #left-eye {
   position: absolute;
-  top: 78px; 
-  left: 109px;
+  top: 78.5px; 
+  left: 109px !important;
 }
 
 /* Set position of right eye */
 #right-eye {
   position: absolute;
-  top: 78px;
-  right: 109px;
+  top: 78.5px;
+  right: 109px !important;
 }
 
 /* The background for your doll (NOT the entire dollmaker! This will be part of your exported doll and fits neatly inside the doll frame). */
