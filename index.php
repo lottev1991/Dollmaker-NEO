@@ -38,7 +38,7 @@ function displayBase($path, $ignore) {
 			$filetitle = pathinfo($curimg, PATHINFO_FILENAME);
 			$find = ['-slash-', '``', '`',];
 			$replace = ['/', '"', "'"];
-			echo "<a href=\"$path/full/" . $curimg . "\"><img src=\"$path/thumbnails/" . $curimg . "\" alt=\"swatch\" title=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\"></a>";
+			echo "<a href=\"$path/full/" . $curimg . "\"><img src=\"$path/thumbnails/" . $curimg . "\" alt=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\" title=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\"></a>";
 		}
 	};
 }
@@ -61,7 +61,7 @@ function displayBase($path, $ignore) {
 			$randomImage = $images[array_rand($images)];
 			$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
 			?>
-			<img id="skintone" src="<?php echo ($randomImage); ?>" alt="BaseBody" title="The base body of the doll.">
+			<img id="skintone" src="<?php echo ($randomImage); ?>" alt="The base body of the doll." title="The base body of the doll.">
 
 			<?php
 			$imageDir = 'base/LeftEye/full/';
@@ -69,7 +69,7 @@ function displayBase($path, $ignore) {
 			$randomImage = $images[array_rand($images)];
 			$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
 			?>
-			<img id="left-eye" src="<?php echo ($randomImage); ?>" alt="LeftEye" title="The left eye of the doll.">
+			<img id="left-eye" src="<?php echo ($randomImage); ?>" alt="The left eye of the doll." title="The left eye of the doll.">
 
 			<?php
 			$imageDir = 'base/RightEye/full/';
@@ -77,12 +77,12 @@ function displayBase($path, $ignore) {
 			$randomImage = $images[array_rand($images)];
 			$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
 			?>
-			<img id="right-eye" src="<?php echo ($randomImage); ?>" alt="RightEye" title="The right eye of the doll.">
+			<img id="right-eye" src="<?php echo ($randomImage); ?>" alt="The right eye of the doll." title="The right eye of the doll.">
 			<!-- The doll background is transparent by default -->
 			<img id="doll-bg">
 		</div>
 		<div id="swatchesArea" class="ui-corner-all">
-			<button id="instrBtn" title="Click here to toggle the instructions for the dollmaker.">Dollmaker instructions</button>
+			<button id="instrBtn" alt="Click here to toggle the instructions for the dollmaker." title="Click here to toggle the instructions for the dollmaker.">Dollmaker instructions</button>
 			<div id="instructions">
 				<!-- <h3>Instructions:</h3> -->
 				<ul id="instructions-list">
@@ -101,19 +101,19 @@ function displayBase($path, $ignore) {
 			</div>
 			<h3>Tools:</h3>
 				<!-- Button to download the finished doll. -->
-				<button id="downloadDoll" title="Click here to download your finished doll.">Download doll</button>
+				<button id="downloadDoll" alt="Click here to download your finished doll." title="Click here to download your finished doll.">Download doll</button>
 				<!-- Button to download a 100x100 avatar of the doll. -->
-				<button id="downloadAvi" title="Click here to download a 100x100 avatar of your doll.">Download avatar (100x100)</button>
+				<button id="downloadAvi" alt="Click here to download a 100x100 avatar of your doll."title="Click here to download a 100x100 avatar of your doll.">Download avatar (100x100)</button>
 
 				<!-- Button to toggle fullscreen. -->
-				<button id="fullscreen" title="Click here to toggle between fullscreen and windowed mode. (On desktop, you can also press F11.)" onclick="toggleFullScreen()">Toggle fullscreen</button>
+				<button id="fullscreen" alt="Click here to toggle between fullscreen and windowed mode. (On desktop, you can also press F11.)" title="Click here to toggle between fullscreen and windowed mode. (On desktop, you can also press F11.)" onclick="toggleFullScreen()">Toggle fullscreen</button>
 				<!-- Button to refresh the page, resetting all positions. -->
-				<button id="reset" title="Click here to reset the dollmaker to its default settings.">Reset dollmaker</button>
+				<button id="reset" alt="Click here to reset the dollmaker to its default settings." title="Click here to reset the dollmaker to its default settings.">Reset dollmaker</button>
 
 				<div id="bgSwitch">
 					<h3>Doll background:</h3>
 					<!-- No background by default -->
-					<a href=""><img src="base/Background/None.png" alt="swatch" title="No background"></a>
+					<a href=""><img src="base/Background/None.png" alt="No background" title="No background"></a>
 					<?php displayBase("base/Background", $ignore); ?>
 				</div>
 				<div id="skinSwitch">
@@ -129,7 +129,7 @@ function displayBase($path, $ignore) {
 					<?php displayBase("base/RightEye", $ignore); ?>
 				</div>
 		</div>
-		<div id="piecesArea" title="You can drag pieces from this area.">
+		<div id="piecesArea" alt="You can drag pieces from this area." title="You can drag pieces from this area.">
 			<?php
 			$folders = scandir("images/");
 

@@ -93,9 +93,9 @@ $(function () { /* Simplified this in order to future-proof the code */
 	$("#swatchesArea a").on("click", function () {
 		var changeSrc = $(this).attr("href");
 		var type = $(this).parent().attr("id");
-		/* Dynamic title-switching (currently for the background div only) */
+		/* Dynamic alt/title-switching (currently for the background div only) */
 		let bgPath = `base/Background/full/`;
-		var changeTitle = changeSrc.replace(bgPath, "").replace(/\.[^/.]+$/, "").replace('-slash-', '/').replace('``', '"').replace('`', '\'');
+		var changeAttr = changeSrc.replace(bgPath, "").replace(/\.[^/.]+$/, "").replace('-slash-', '/').replace('``', '"').replace('`', '\'');
 		switch (type) {
 			case "skinSwitch":
 				$("#skintone").attr("src", changeSrc,);
@@ -109,7 +109,8 @@ $(function () { /* Simplified this in order to future-proof the code */
 			case "bgSwitch":
 				$("#doll-bg").attr({
 					"src": changeSrc,
-					"title": changeTitle,
+					"alt": changeAttr,
+					"title": changeAttr,
 				});
 				break;
 		};
