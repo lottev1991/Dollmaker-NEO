@@ -4,8 +4,10 @@
 
 /*----------------------------------------------*/
 /*These are needed for the tab functionality and drag/drop functionality to work*/
-.ui-tabs-hide {
+.ui-tabs-hide { /* This class is actually no longer in jQuery UI as of v1.9, but I brought it back (in my own way) specifically for the dollmaker. I could've named it something else, but I mean, why would I? */
   visibility: hidden;
+  display: block !important; /* This is to overwrite the default "display: none" functionality of the current tab hiding functionality.
+  WARNING: Do NOT remove the "!important" tag! Otherwise it will not work (trust me, I've tested it). */
 }
 
 /* The panel under the tabs that contain the props*/
