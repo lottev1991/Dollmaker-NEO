@@ -121,6 +121,11 @@ $(function () { /* Simplified this in order to future-proof the code */
 		window.location.reload();
 	});
 
+    /* I have now made it so that the width and height of the rendered canvas will always be the exact same as the body area width and height. So you no longer have to specify it manually. */
+	const bodyArea = document.getElementById("bodyArea");
+	let containerWidth = bodyArea.offsetWidth;
+	let containerHeight = bodyArea.offsetHeight;
+
 	/* Adds that super sweet option to download your finished doll. No more manual screenshotting and editing needed!
 		WARNING: THIS WILL DO LOTS OF HACKY STUFF! That's just the nature of the game I'm afraid. */
 	$("#downloadDoll").on("click", function () {
@@ -129,10 +134,8 @@ $(function () { /* Simplified this in order to future-proof the code */
 			backgroundColor: null, /* Important for transparent background; if you remove this, it will be white instead (aka default html2canvas behavior). */
 			allowTaint: true,
 			useCORS: true,
-			/* !! IMPORTANT !! Make these the EXACT same width and height as the "bodyArea" div!!!
-				This does mean that you sadly can't add the function to change the doll's width and height like some older dollmakers have. I guess some concessions simply need to be made... */
-			width: 249,
-			height: 400,
+			width: containerWidth,
+			height: containerHeight,
 			scale: 1, /* Renders the final canvas at a zoom level of 1 at all times, otherwise your final image will be zoomed in along with the page and we don't want that.  */
 			imageSmoothingEnabled: false, /* This is a custom setting that I added to my fork of html2canvas. When set to "false", it makes sure the final image remains pixelated no matter the zoom level and/or scaling ("true" is the default and does the opposite). NOTE: I've coded it so that setting "image-rendering: pixelated" and "image-rendering: crisp-edges" in CSS stylesheets will accomplish the same thing.*/
 		}).then(canvas => {
