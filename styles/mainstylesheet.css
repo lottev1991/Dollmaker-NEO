@@ -246,7 +246,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Note: I wouldn't change the font and/or font-size here without adjusting the padding. If you don't do that, your drag & drop positions will get messed up. Yes, really. */
 #tabsbar li a {
   /* !!!!!IE7 */
-  padding: 5px 10px 4px;
+  padding: 6px 10px 4px;
   font-weight: bold;
   text-decoration: none;
   transition: 0.3s;
