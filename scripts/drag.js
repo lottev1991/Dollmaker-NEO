@@ -20,12 +20,19 @@ function prepareDoll() {
 		"background-color": "transparent", /* Make div background transparent to prepare doll (html2canvas will make it "properly" transparent later, but this removes the color information at least) */
 		"border-radius": "0px", /* Resets border radius so the rounded corners are not visible on the final image */
 	});
+	/* Change background border radius to zero, so the edges are sharp in the final doll. (You can remove this if you want the rounded corners to remain in all backgrounds.)*/
+	$("#doll-bg").css({
+		"border-radius": "0px",
+	});
 }
 
 /* Revert the CSS of the body div and tabs back to normal. */
 function revertDoll() {
 	$("#bodyArea").css({
 		"background-color": "",
+		"border-radius": "",
+	});
+	$("#doll-bg").css({
 		"border-radius": "",
 	});
 }

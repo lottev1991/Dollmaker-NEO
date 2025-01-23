@@ -157,6 +157,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1; /* Place the doll background behind all other images */
   inset: 0px; /* Set all positions to 0, since the background should be the same width and height as the final doll */
   position: absolute;
+  border-radius: 5px;
 }
 
 /*-------------------------------------------------------------------*/
