@@ -128,12 +128,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 249px;
   height: 400px;
   z-index: 0;
+  text-align: center;
 }
 
 /* Position of the base body elements*/
-/* Protip: do NOT use 'margin: auto' to center your base image! It might the base image blurry on export. Yes I am speaking from experience, no it was not fun. Use absolute pixels only. */
 #skintone {
-  position: absolute;
+  margin: 55px 0 0 0;
   z-index: 0;
 }
 
@@ -141,11 +141,15 @@ h1, h2, h3, h4, h5, h6 {
 /* Set position of left eye */
 #left-eye {
   position: absolute;
+  top: 78px;
+  left: 109px;
 }
 
 /* Set position of right eye */
 #right-eye {
   position: absolute;
+  top: 78px;
+  right: 109px;
 }
 
 /* The background for your doll (NOT the entire dollmaker! This will be part of your exported doll and fits neatly inside the doll frame). */
@@ -243,14 +247,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Allows the tabs to be next to eachother*/
 #tabsbar li {
-  display: inline-block;
+  display: inline;
 }
 
 /*Individual tabs. Change to your own colors!*/
+/* Note: I wouldn't change the font and/or font-size here without adjusting the padding. If you don't do that, your drag & drop positions will get messed up. Yes, really. */
 #tabsbar li a {
   /* !!!!!IE7 */
-  padding: 3px 10px 4px;
-  font-size: 13px;
+  padding: 5px 10px 4px;
   font-weight: bold;
   text-decoration: none;
   transition: 0.3s;
@@ -271,44 +275,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #piecesArea img {
   margin: 0 10px 10px 0;
-}
-
-/*-------------------------------------------------------------------*/
-
-/* Media queries for pixel scaling on mobile & desktop (since it's not ever 1:1 or with whole numbers) */
-
-@media screen and (min-width: 960px) {
-  #skintone {
-    top: 55.5px;
-    left: 69px;
-  }
-  
-  #left-eye {
-    top: 78.5px;
-    left: 109px;
-  }
-  
-  #right-eye {
-    top: 78.5px;
-    right: 109px;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  #skintone {
-    top: 55px;
-    left: 69.5px;
-  }
-
-  #left-eye {
-    top: 78px;
-    left: 109.5px;
-  }
-
-  #right-eye {
-    top: 78px;
-    right: 108.5px;
-  }
 }
 
 /*-------------------------------------------------------------------*/
