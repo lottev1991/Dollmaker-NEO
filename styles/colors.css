@@ -44,7 +44,7 @@ h1,h2,h3,h4,h5,h6,button {
     font-family: 'Pixelify Sans', sans-serif;
 }
 
-button {
+button, button:active {
     color: #4A00C0;
     background-color: #ECE0FF;
     outline: 1px solid #4A00C0;
