@@ -47,44 +47,46 @@ h1,h2,h3,h4,h5,h6,button {
 button {
     color: #4A00C0;
     background-color: #ECE0FF;
-    border: 1px solid #4A00C0;
+    outline: 1px solid #4A00C0;
+    border: 0;
 }
 
 /* Button hover styling */
 button:hover {
     background-color: #C49FFF;
     color: white;
-    border: 1px solid white;
+    outline: 1px solid white;
+    border: 0;
 }
 
 /* This specifies styles that will affect all the boxes. Change to your own colors!*/
 #bodyArea,#swatchesArea,.ui-tabs-panel {
-    border: 1px solid #4A00C0;
+    outline: 1px solid #4A00C0; /* Switched border with outline, to prevent offset issues on mobile */
     background: #D9C0FF;
 }
 
 #swatchesArea a {
-    border: 1px solid #4A00C0;
+    outline: 1px solid #4A00C0;
 }
 
 #swatchesArea a:hover {
-	border: 1px solid white;
+	outline: 1px solid white;
 }
 
 #tabsbar li a {
    border: 1px solid #4A00C0;
-   border-bottom: 4px solid #C4A0FF;
+   border-bottom: 3px solid #C4A0FF;
    background-color: #C4A0FF;
    color: #4A00C0;
 }
 
 /* Tabs hover styling, only for unselected tabs */
 #tabsbar .ui-state-default a:hover {
-    border-bottom: 4px solid #B080FF;
+    border-bottom: 3px solid #B080FF;
     background-color: #B080FF;
 }
 
 #tabsbar .ui-state-active a,#tabsbar .ui-state-active a:hover {
-    border-bottom: 4px solid #D8C0FF;
+    border-bottom: 3px solid #D8C0FF;
     background-color: #D8C0FF;
 }
