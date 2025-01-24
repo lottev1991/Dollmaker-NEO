@@ -39,11 +39,6 @@ body {
     color: white;
 }
 
-/* Use custom fonts for stuff that you wanna use it for */
-h1,h2,h3,h4,h5,h6,button {
-    font-family: 'Pixelify Sans', sans-serif;
-}
-
 button {
     color: #4A00C0;
     background-color: #ECE0FF;
