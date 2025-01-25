@@ -20,6 +20,12 @@ This is a stripped-down fork of [Ninique's original dollmaker script](https://gi
 - [FileSaver.js](https://github.com/eligrey/FileSaver.js)
 - [html2canvas](https://github.com/lottev1991/html2canvas) (custom fork; required for full functionality of the script)
 
+## Embed from CDN (jsDelivr)
+Put this `<script>` tag inside your page's `<head>` tag, after embedding the necessary scripts listed above:
+
+`<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lottev1991/Dollmaker-NEO@dollmaker-portable/js/dollmaker-portable.min.js" cross-origin="anonymous"></script>`
+
+
 ## Required CSS selectors
 - The container containing the dollmaker should have the ID `#dollmaker-container`. All of the elements listed below should be put *inside* this element.
 - Any area that you want to put draggable pieces in should have the class `.pieces-area`. You could have multiple of these on the page, if you really wanted to.
@@ -29,5 +35,5 @@ This is a stripped-down fork of [Ninique's original dollmaker script](https://gi
 You are free to customize these however you see fit (though see below for notes).
 
 ## Customization notes
-- Do **not** style the dollmaker container with the `max-width` CSS property; please use a static `width` instead. `max-width` will screw up the positions of the draggables and will also affect html2canvas rendering. Feel free to implement responsive scaling if necessary; the final doll image will always be scaled back to 100%.
+- Do **not** style the dollmaker container with the `max-width` CSS property; please use a static `width` instead. `max-width` will screw up the positions of the draggables and will also affect html2canvas rendering. Feel free to implement responsive sizes and offsets if necessary.
 - The CSS `border` property might mess with image positions on mobile. Please keep this in mind when customizing and don't forget to test.
