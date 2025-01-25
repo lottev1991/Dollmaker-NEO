@@ -11,30 +11,19 @@ function toggleFullScreen() { /* Add full screen toggle. Mostly did this for mob
 	}
 }
 
-/* Temporarily change the CSS of the body and tab areas to properly export the finished doll. It reverts after the doll is generated for saving.
-	Basically, this function makes it so that the doll has a transparent background upon export (if no background has been selected that is) and that the pieces dragged from the tabs will be visible on the doll.
-	As a result, the page will look a bit weird for a split second, but it will revert afterwards (see revertDoll()), so don't worry about it. \
-	Yes this is all very hacky but you simply need that with html2canvas, at least when it comes to drag & drop pages. */
-function prepareDoll() {
-	$("#bodyArea").css({
-		"background-color": "transparent", /* Make div background transparent to prepare doll (html2canvas will make it "properly" transparent later, but this removes the color information at least) */
-		"border-radius": "0px", /* Resets border radius so the rounded corners are not visible on the final image */
+/* Change the CSS of the cloned doll element.
+Basically, this function makes it so that the doll has a transparent background upon export (if no background has been selected that is).
+This no longer affects the actual doll area itself, so you don't have to worry about flashes anymore. */
+function prepareDoll(clone) {
+	$(clone).find('#bodyArea').css({
+		"background-color": "transparent",
+		"border-radius": "0",
 	});
-	/* Change background border radius to zero, so the edges are sharp in the final doll. (You can remove this if you want the rounded corners to remain in all backgrounds.)*/
-	$("#doll-bg").css({
-		"border-radius": "0px",
-	});
-}
-
-/* Revert the CSS of the body div and tabs back to normal. */
-function revertDoll() {
-	$("#bodyArea").css({
-		"background-color": "",
-		"border-radius": "",
-	});
-	$("#doll-bg").css({
-		"border-radius": "",
-	});
+	/* Change background border radius to zero, so the edges are sharp in the final doll.
+	(You can remove this if you want the rounded corners to remain in all backgrounds.)*/
+	$(clone).find('#doll-bg').css({
+		"border-radius": "0",
+	})
 }
 
 /* Re-implement old "ui-tabs-hide" class. This is to set inactive tabs to "visibility: hidden" and "display: block" instead of "display: none" upon switching, to preserve dragged-out items. */
@@ -70,8 +59,10 @@ $(function () { /* Simplified this in order to future-proof the code */
 		//changes current tab to the tab the piece belongs to when dragged out of body area
 		out: function (event, ui) {
 			ui.draggable.removeClass("draggedout");
-			var whichTab = ui.draggable.parent().index() - 1; /* Had to change the ID attribute to an index, since that's how it works in jQuery UI nowadays. Since the tab index is zero-based, I had to pass -1 for it to work correctly (it seems to be 1-based by default in jQuery?).
-			Also, the "select" function got renamed to "active" in jQuery UI v1.9 (notice a pattern? lol), which is why it's called that here. The function remains effectively the same. */
+			var whichTab = ui.draggable.parent().index() - 1; /* Had to change the ID attribute to an index, since that's how it works in jQuery UI nowadays.
+			Since the tab index is zero-based, I had to pass -1 for it to work correctly (it seems to be 1-based by default in jQuery?).
+			Also, the "select" function got renamed to "active" in jQuery UI v1.9 (notice a pattern? lol), which is why it's called that here.
+			The function remains effectively the same. */
 			$("#piecesArea").tabs({
 				active: whichTab
 			});
@@ -137,29 +128,31 @@ $(function () { /* Simplified this in order to future-proof the code */
 		WARNING: THIS WILL DO LOTS OF HACKY STUFF! That's just the nature of the game I'm afraid. */
 	$("#downloadDoll").on("click", function () {
 		html2canvas(document.querySelector("#dollmaker_container"), {
-			onclone: [prepareDoll()],
+			onclone: function (clone) {
+				prepareDoll(clone);
+			},
 			backgroundColor: null, /* Important for transparent background; if you remove this, it will be white instead (aka default html2canvas behavior). */
 			allowTaint: true,
 			useCORS: true,
 			width: containerWidth,
 			height: containerHeight,
 			scale: 1, /* Renders the final canvas at a zoom level of 1 at all times, otherwise your final image will be zoomed in along with the page and we don't want that.  */
-			imageSmoothingEnabled: false, /* This is a custom setting that I added to my fork of html2canvas. When set to "false", it makes sure the final image remains pixelated no matter the zoom level and/or scaling ("true" is the default and does the opposite). NOTE: I've coded it so that setting "image-rendering: pixelated" and "image-rendering: crisp-edges" in CSS stylesheets will accomplish the same thing.*/
+			imageSmoothingEnabled: false, /* This is a custom setting that I added to my fork of html2canvas.
+			When set to "false", it makes sure the final image remains pixelated no matter the zoom level and/or scaling ("true" is the default and does the opposite).
+			NOTE: I've coded it so that setting "image-rendering: pixelated" and "image-rendering: crisp-edges" in CSS stylesheets will accomplish the same thing.*/
 		}).then(canvas => {
 			canvas.toBlob(function (blob) {
-				/* Revert the CSS of the body div and tabs back to normal. */
-				revertDoll();
 				try { /* Save the final image as PNG.
-							On desktop, you can easily change the name to whatever you like.
-							On smartphones, you'll have to do this manually after saving.
-							(I have no interest in accessing anyone's phone file system, due to privacy concerns. This is why you have to do it after the fact in that case.) */
+						On desktop, you can easily change the name to whatever you like.
+						On smartphones, you'll have to do this manually after saving.
+						(I have no interest in accessing anyone's phone file system, due to privacy concerns. This is why you have to do it after the fact in that case.) */
 					window.saveAs(
 						blob, 'my_doll.png', canvas.toDataURL('image/png'),
 					);
 				} catch (e) {
 					alert(e); /* Make sure to run this project on a web server! Otherwise you might get an error when trying to save the image (especially with Firefox, due to its CORS policy).
-									 I added this alert function to warn/remind people of that (since I ran in it myself and was very confused at the time when I was still a newbie).
-									 Please consult the readme for tips on local testing!*/
+					I added this alert function to warn/remind people of that (since I ran in it myself and was very confused at the time when I was still a newbie).
+					Please consult the readme for tips on local testing!*/
 				};
 			});
 		});
@@ -167,7 +160,9 @@ $(function () { /* Simplified this in order to future-proof the code */
 	/* Option to download a 100x100 avatar version of your doll. It functions similarly to the other button, just with a different canvas size and x-y offsets */
 	$("#downloadAvi").on("click", function () {
 		html2canvas(document.querySelector("#dollmaker_container"), {
-			onclone: [prepareDoll()],
+			onclone: function (clone) {
+				prepareDoll(clone);
+			},
 			backgroundColor: null,
 			allowTaint: true,
 			width: 100,
@@ -179,7 +174,6 @@ $(function () { /* Simplified this in order to future-proof the code */
 			imageSmoothingEnabled: false,
 		}).then(canvas => {
 			canvas.toBlob(function (blob) {
-				revertDoll();
 				try {
 					window.saveAs(
 						blob, 'my_doll_avi.png', canvas.toDataURL('image/png'),
