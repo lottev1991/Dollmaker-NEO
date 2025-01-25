@@ -6,8 +6,8 @@ This project is a fork of Ninique's original [Dollmaker script](https://github.c
 
 ## New features
 - **Responsive page layout**. The dollmaker's content is always centered, which means it will load nicely on phones and tablets, while still looking good on PC screens.
-- **Support for touch input**, which means you can also actually *play* with the dollmaker on your phone or tablet. This is done with the help of the [Touch Punch](https://github.com/furf/jquery-ui-touch-punch/) library.
-- **Exporting your finished doll as a PNG image**, with the help of [FileSaver.js](https://github.com/eligrey/FileSaver.js) and [html2canvas](https://github.com/niklasvh/html2canvas). No more manual screenshotting and pasting in a paint program!
+- **Support for touch input**, which means you can also actually *play* with the dollmaker on your phone or tablet. This is done with the help of a more up-to-date fork of the [Touch Punch](https://github.com/RWAP/jquery-ui-touch-punch/) library.
+- **Exporting your finished doll as a PNG image**, with the help of [FileSaver.js](https://github.com/eligrey/FileSaver.js) and my custom fork of [html2canvas](https://github.com/lottev1991/html2canvas). No more manual screenshotting and pasting in a paint program!
     - The backgrounds are also **transparent by default**, so you don't need to do that yourself either.
     - It also has the ability to **create a cropped avatar** of your final doll (100x100 pixels by default) for easy use on social media services, forums and chat rooms.
 - **Randomized images** *(PHP-only)*. By default, the script makes it so that the doll has no default skin or eye color; it picks a random one upon loading. (You can change these manually afterwards, don't worry!)
