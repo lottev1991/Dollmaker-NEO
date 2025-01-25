@@ -13,17 +13,14 @@ function toggleFullScreen() { /* Add full screen toggle. Mostly did this for mob
 
 /* Change the CSS of the cloned doll element.
 Basically, this function makes it so that the doll has a transparent background upon export (if no background has been selected that is).
-This no longer affects the actual doll area itself, so you don't have to worry about flashes anymore. */
+This no longer affects the actual doll area itself, so you don't have to worry about flashes anymore.
+(You can remove the "#doll-bg" part if you want the rounded corners to remain in all background images.)*/
 function prepareDoll(clone) {
-	$(clone).find('#bodyArea').css({
+	$(clone).find('#bodyArea,.ui-tabs-panel,#doll-bg').css({
 		"background-color": "transparent",
+		"border": "0",
 		"border-radius": "0",
 	});
-	/* Change background border radius to zero, so the edges are sharp in the final doll.
-	(You can remove this if you want the rounded corners to remain in all backgrounds.)*/
-	$(clone).find('#doll-bg').css({
-		"border-radius": "0",
-	})
 }
 
 /* Re-implement old "ui-tabs-hide" class. This is to set inactive tabs to "visibility: hidden" and "display: block" instead of "display: none" upon switching, to preserve dragged-out items. */
