@@ -11,7 +11,7 @@ This is a stripped-down fork of [Ninique's original dollmaker script](https://gi
 - Doll save function.
 - PHP tools:
     - Embeddable script for populating a container with images (for people who are able to use PHP).
-    - A convenient embeddable HTML file containing all the necessary JavaScript in the `<head>` tag of your dollmaker PHP file (if you use plain HTML, feel free to copy the code over to your `<head>` tag instead. Note that the URL to `dollmaker-portable.js` might need to be changed).
+    - A convenient embeddable HTML file containing all the necessary JavaScript in the `<head>` tag of your dollmaker PHP file (if you use plain HTML, feel free to copy the code over to your `<head>` tag instead).
 
 ## Required libraries
 - [jQuery](https://releases.jquery.com/jquery/)
@@ -24,6 +24,8 @@ This is a stripped-down fork of [Ninique's original dollmaker script](https://gi
 Put this `<script>` tag inside your page's `<head>` tag, after embedding the necessary scripts listed above:
 
 `<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lottev1991/Dollmaker-NEO@dollmaker-portable/js/dollmaker-portable.min.js" cross-origin="anonymous"></script>`
+
+Or you can embed the `head.html` file inside the tag to easily embed all files at once if you use PHP, as mentioned above.
 
 
 ## Required CSS selectors
