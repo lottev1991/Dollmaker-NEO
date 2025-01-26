@@ -45,7 +45,6 @@ function displayBase($path, $ignore) {
 	<h2 id="page-subheader">Original code by <a href="https://github.com/ninique/Dollmaker-Script" target="_blank">Ninique</a> | Fork by <a href="https://github.com/lottev1991/Dollmaker-NEO" target="_blank">Lotte V</a></h2>
 	<!-- You can put your own content up here. You can move the dollmaker on the page using CSS (see mainstylesheet.css for details) -->
 	<div id="dollmaker_container">
-		
 		<div id="bodyArea" class="ui-corner-all" title="Make your doll here.">
 			<?php
 			/* Find-and-replace options for variable names. */
@@ -77,21 +76,19 @@ function displayBase($path, $ignore) {
 			<img id="right-eye" src="<?php echo ($randomImage); ?>" alt="The right eye of the doll." title="The right eye of the doll.">
 			<!-- The doll background is transparent by default -->
 			<img id="doll-bg">
+			<!-- Avatar area, not visible on the document -->
+			<div id="avi-area"></div>
 		</div>
 		<div id="swatchesArea" class="ui-corner-all">
 			<button id="instrBtn" alt="Click here to toggle the instructions for the dollmaker." title="Click here to toggle the instructions for the dollmaker.">Dollmaker instructions</button>
 			<div id="instructions">
-				<!-- <h3>Instructions:</h3> -->
 				<ul id="instructions-list">
 					<li>Drag and drop the <b>items</b> from the middle-right of the page onto the doll above.</li>
 					<li>For easy navigation among the different items, you can click on the <b>tab of your choice</b> at the top of the page.</li>
 					<li>Click on the <b>swatches</b> below to change skin and eye color, as well as the doll background. You choose the eye color per eye, so that you can easily give your doll two different eye colors with any combination of colors.</li>
-					<li>Click on the <b>"Download doll"</b> button below to download your finished doll.
-						<ul class="subBullet">
-							<li><b>NOTE:</b> While exporting the final doll, you'll see the doll container background and border disappear for about a second. This is normal and nothing to worry about; it's all part of the process to prepare and export the final doll.</li>
-						</ul>
-					</li>
-					<li>Click on the <b>"Download avatar (100x100)"</b> button to download a cropped avatar of your doll. (Keep the above note about zoom level in mind!)</li>
+					<li>Click on the <b>"Download doll"</b> button below to download your finished doll.</li>
+					 <!-- Make sure to adjust the listed avatar dimensions here too! -->
+					<li>Click on the <b>"Download avatar (100x100)"</b> button to download a cropped avatar of your doll.</li>
 					<li>Click on the <b>"Reset dollmaker"</b> button to reset the dollmaker.</li>
 					<li>Click on the <b>"Toggle fullscreen"</b> button to toggle between fullscreen and windowed mode.</li>
 				</ul>
@@ -99,7 +96,7 @@ function displayBase($path, $ignore) {
 			<h3>Tools:</h3>
 				<!-- Button to download the finished doll. -->
 				<button id="downloadDoll" alt="Click here to download your finished doll." title="Click here to download your finished doll.">Download doll</button>
-				<!-- Button to download a 100x100 avatar of the doll. -->
+				<!-- Button to download a 100x100 avatar of the doll. Make sure to change the dimensions listed if you changed them in the CSS.  -->
 				<button id="downloadAvi" alt="Click here to download a 100x100 avatar of your doll."title="Click here to download a 100x100 avatar of your doll.">Download avatar (100x100)</button>
 
 				<!-- Button to toggle fullscreen. -->
