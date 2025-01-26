@@ -154,7 +154,15 @@ $(function () { /* Simplified this in order to future-proof the code */
 			});
 		});
 	});
-	/* Option to download a 100x100 avatar version of your doll. It functions similarly to the other button, just with a different canvas size and x-y offsets */
+
+	/* Takes the dimensions and offsets of the avatar area from the document */
+	const aviArea = document.querySelector("#avi-area");
+	let aviWidth = aviArea.offsetWidth;
+	let aviHeight = aviArea.offsetHeight;
+	let aviX = bodyArea.offsetLeft + aviArea.offsetLeft;
+	let aviY= bodyArea.offsetTop + aviArea.offsetTop;
+
+	/* Option to download an avatar version of your doll (size is now customizable through CSS). It functions similarly to the other button, just with a different canvas size and x-y offsets */
 	$("#downloadAvi").on("click", function () {
 		html2canvas(document.querySelector("#dollmaker_container"), {
 			onclone: function (clone) {
@@ -162,11 +170,11 @@ $(function () { /* Simplified this in order to future-proof the code */
 			},
 			backgroundColor: null,
 			allowTaint: true,
-			width: 100,
-			height: 100,
+			width: aviWidth,
+			height: aviHeight,
 			/* Offset properties so that the avatar will be in frame properly. (Calculating these wasn't fun...) */
-			x: 75,
-			y: 36,
+			x: aviX,
+			y: aviY,
 			scale: 1,
 			imageSmoothingEnabled: false,
 		}).then(canvas => {

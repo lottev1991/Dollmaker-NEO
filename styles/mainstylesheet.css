@@ -161,6 +161,16 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 5px;
 }
 
+/* Customize the avatar dimensions here. The avatar div isn't actually visible on the document, although it is technically there on the page. */
+#avi-area {
+  width: 100px;
+  height: 100px;
+  top: 35px;
+  left: 73px;
+  position: absolute;
+  visibility: hidden; /* DON'T use "display: none" here, it will completely hide the element and throw an error. */
+}
+
 /*-------------------------------------------------------------------*/
 /* The area under the base that has links for skintones */
 #swatchesArea { 
