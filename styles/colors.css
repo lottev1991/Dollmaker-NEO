@@ -86,3 +86,10 @@ button:hover {
     border-bottom: 3px solid #D8C0FF;
     background-color: #D8C0FF;
 }
+
+/* Anti Right-click */
+/* Commented out by default since I don't care for it. Feel free to uncomment it for your own project. */
+/* #anti-rightclick {
+    background: #D8C0FF;
+    border: 1px solid #4A00C0;
+} */

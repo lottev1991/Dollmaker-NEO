@@ -280,8 +280,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 170px;
   height:  30px;
   line-height: 1.2;
-  background: #fff;
-  border: 1px solid #ccc;
   padding: 3px 3px 3px 15px;
   position: absolute;
   z-index: 9999;

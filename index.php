@@ -30,6 +30,7 @@
 	<!--remove the following line if you do not want anti-rightclick on images-->
 	<!-- Commented this out by default because I really don't care. Uncomment it for your own project if you like. -->
 	<!-- <script type="text/javascript" src="scripts/anti-rightclick.js"></script> -->
+	<!-- <script type="text/javascript" src="scripts/anti-rightclick.min.js"></script> -->
 </head>
 <?php
 $ignore = array(".", "..", ".htaccess", ".DS_Store");

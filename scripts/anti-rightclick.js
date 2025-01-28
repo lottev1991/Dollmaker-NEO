@@ -1,8 +1,8 @@
 //This script is part of Ninique's Dollmaker Script (http://minidollz.ninique.net)
 
-$(document).ready(function() {
+$(function() {
 	//Only disable right-click on images
-	$("img").bind("contextmenu", function(e) {
+	$("img").on("contextmenu", function(e) {
 		e.preventDefault();	
 		
 		var offsetY = $('#dollmaker_container').position().top;
