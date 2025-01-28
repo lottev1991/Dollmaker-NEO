@@ -3,12 +3,6 @@
 /* Also, I stored all the colors in a separate file. This is because I was originally gonna add theming but it wasn't working out unfortunately. I kept them separate because no way am I adding them all back. */
 
 /*----------------------------------------------*/
-/*These are needed for the tab functionality and drag/drop functionality to work*/
-.ui-tabs-hide { /* This class is actually no longer in jQuery UI as of v1.9, but I brought it back (in my own way) specifically for the dollmaker. I could've named it something else, but I mean, why would I? */
-  visibility: hidden;
-  display: block !important; /* This is to overwrite the default "display: none" functionality of the current tab hiding functionality.
-  WARNING: Do NOT remove the "!important" tag! Otherwise it will not work (trust me, I've tested it). */
-}
 
 /* The panel under the tabs that contain the props*/
 .ui-tabs-panel {
@@ -40,11 +34,6 @@ body {
   font-size: 12px;
 }
 
-/* Use custom fonts for stuff that you wanna use it for */
-h1,h2,h3,h4,h5,h6,button {
-  font-family: 'Pixelify Sans', sans-serif;
-}
-
 /* Page header and sub-header styling */
 #page-header, #page-subheader {
   text-align: center; /* Center the page header and sub-header */
@@ -67,7 +56,7 @@ h1,h2,h3,h4,h5,h6,button {
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 /* Stylings for buttons */
@@ -133,28 +122,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Position of the base body elements*/
-#skintone {
+#Skintone {
   margin: 55px 0 0 0;
   z-index: 0;
+  position: absolute;
+  left: 69px;
 }
 
 /* I separated the customization for the left and right eyes, so you can easily create odd-eyed dolls with any combination of colors and shapes. */
 /* Set position of left eye */
-#left-eye {
+#Left-eye {
   position: absolute;
   top: 78px;
   left: 109px;
 }
 
 /* Set position of right eye */
-#right-eye {
+#Right-eye {
   position: absolute;
   top: 78px;
   right: 109px;
 }
 
 /* The background for your doll (NOT the entire dollmaker! This will be part of your exported doll and fits neatly inside the doll frame). */
-#doll-bg {
+#Doll-background {
   z-index: -1; /* Place the doll background behind all other images */
   inset: 0px; /* Set all positions to 0, since the background should be the same width and height as the final doll */
   position: absolute;
@@ -185,8 +176,9 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   float: left;
   margin: 2px 2px 7px 2px;
+  text-align: center;
   width: 20px;
-  height:20px;
+  height: 20px;
   position:relative;
   transition: 0.3s;
 }
@@ -198,9 +190,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 7px 0 5px 0;
 }
 
-/* Create a margin around the eye switches */
-#leftEyeSwitch img, #rightEyeSwitch img {
-  margin-left: 4px;
+/* Create a margin around the eye switch images */
+#Left-eye-switch img, #Right-eye-switch img {
   margin-top: 5px;
 }
 
@@ -215,6 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #instructions-list {
   margin: 1em;
+  line-height: 1.5em;
   display: list-item;
   list-style-type: disc;
 }

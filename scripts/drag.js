@@ -14,25 +14,29 @@ function toggleFullScreen() { /* Add full screen toggle. Mostly did this for mob
 /* Change the CSS of the cloned doll element.
 Basically, this function makes it so that the doll has a transparent background upon export (if no background has been selected that is).
 This no longer affects the actual doll area itself, so you don't have to worry about flashes anymore.
-(You can remove the "#doll-bg" part if you want the rounded corners to remain in all background images.)*/
+(You can remove the "#bodyArea > img" part if you want the rounded corners to remain in all clickable images.) */
 function prepareDoll(clone) {
-	$(clone).find('#bodyArea,.ui-tabs-panel,#doll-bg').css({
+	$(clone).find('#bodyArea, #piecesArea > div, #bodyArea > img').css({
 		"background-color": "transparent",
 		"border": "0",
 		"border-radius": "0",
 	});
 }
 
-/* Re-implement old "ui-tabs-hide" class. This is to set inactive tabs to "visibility: hidden" and "display: block" instead of "display: none" upon switching, to preserve dragged-out items. */
+/* These are needed for the tab functionality and drag/drop functionality to work
+Based on the removed jQuery UI "ui-tabs-hide" class. I moved the setting here so that users don't have to manually define a CSS class.
+This class is no longer in jQuery UI as of v1.9, but I brought it back (in my own way) specifically for the dollmaker.
+This is to set inactive tabs to "visibility: hidden" and "display: block" instead of "display: none" upon switching, to preserve dragged-out items. */
 (function ($) {
 	$.fn.invisible = function () {
 		return this.each(function () {
-			$(this).addClass("ui-tabs-hide")
+			this.style.cssText = "visibility: hidden; display: block !important;"; /* The display setting is to overwrite the default "display: none" functionality of the current tab hiding functionality.
+  			WARNING: Do NOT remove the "!important" tag! Otherwise it will not work (trust me, I've tested it). */
 		});
 	};
 	$.fn.visible = function () {
-		return this.each(function () {
-			$(this).removeClass("ui-tabs-hide")
+		return this.each(function () { /* Revert back to default on tab switch */
+			this.style.cssText = "";
 		});
 	};
 }(jQuery));
@@ -82,32 +86,40 @@ $(function () { /* Simplified this in order to future-proof the code */
 
 	/*NOTE: It would be better to use an implementation of this that uses nth child, and put the order the same in both cases.*/
 
-	//changes the body when thumbnails are clicked	
-	$("#swatchesArea a").on("click", function () {
+	/* Returns basename of file string */
+	function basename(str, sep) {
+		return str.substr(str.lastIndexOf(sep) + 1);
+	}
+
+	/* Strips extension of file base name */
+	function strip_extension(str) {
+		return str.substr(0, str.lastIndexOf('.'));
+	}
+
+	/* Dynamically add clickable functionality to any sort of piece you want to be clickable. */
+	$(`#swatchesArea a`).on("click", function(e) {
 		var changeSrc = $(this).attr("href");
 		var type = $(this).parent().attr("id");
-		/* Dynamic alt/title-switching (currently for the background div only) */
-		let bgPath = `base/Background/full/`;
-		var changeAttr = changeSrc.replace(bgPath, "").replace(/\.[^/.]+$/, "").replace('-slash-', '/').replace('``', '"').replace('`', '\'');
-		switch (type) {
-			case "skinSwitch":
-				$("#skintone").attr("src", changeSrc,);
-				break;
-			case "leftEyeSwitch":
-				$("#left-eye").attr("src", changeSrc,);
-				break;
-			case "rightEyeSwitch":
-				$("#right-eye").attr("src", changeSrc,);
-				break;
-			case "bgSwitch":
-				$("#doll-bg").attr({
-					"src": changeSrc,
-					"alt": changeAttr,
-					"title": changeAttr,
-				});
-				break;
-		};
-		return false;
+		/* Dynamic attribute-switching */
+		var changeAttr = strip_extension(basename(changeSrc, '/')).replace(/\.[^/.]+$/, "").replace('-slash-', '/').replace('``', '"').replace('`', '\'');
+		var switchers = document.getElementsByClassName("switcher");
+		var findImg = document.getElementsByClassName("clickable");
+		var switchArr = Array.from(switchers);
+		var imgArr = Array.from(findImg);
+		for (var index = 0; index < switchArr.length; index++) {
+			let element = $(switchArr[index]).attr("id");
+			let imgEl = $(imgArr[index]);
+			switch (type) {
+				case element:
+					$(imgEl).attr({
+						"src": changeSrc,
+						"alt": changeAttr,
+						"title": changeAttr,
+					});
+					break;
+			};
+			e.preventDefault();
+		}
 	});
 
 	/* Refreshes the page to reset all the pieces to their original position, and all the swatches back to default (which is randomized in the case of skin and eyes).*/
@@ -120,6 +132,8 @@ $(function () { /* Simplified this in order to future-proof the code */
 	const bodyArea = document.getElementById("bodyArea");
 	let containerWidth = bodyArea.offsetWidth;
 	let containerHeight = bodyArea.offsetHeight;
+	let bodyX = bodyArea.offsetLeft;
+	let bodyY = bodyArea.offsetTop;
 
 	/* Adds that super sweet option to download your finished doll. No more manual screenshotting and editing needed!
 		WARNING: THIS WILL DO LOTS OF HACKY STUFF! That's just the nature of the game I'm afraid. */
@@ -137,6 +151,8 @@ $(function () { /* Simplified this in order to future-proof the code */
 			imageSmoothingEnabled: false, /* This is a custom setting that I added to my fork of html2canvas.
 			When set to "false", it makes sure the final image remains pixelated no matter the zoom level and/or scaling ("true" is the default and does the opposite).
 			NOTE: I've coded it so that setting "image-rendering: pixelated" and "image-rendering: crisp-edges" in CSS stylesheets will accomplish the same thing.*/
+			x: bodyX,
+			y: bodyY,
 		}).then(canvas => {
 			canvas.toBlob(function (blob) {
 				try { /* Save the final image as PNG.
@@ -159,8 +175,8 @@ $(function () { /* Simplified this in order to future-proof the code */
 	const aviArea = document.querySelector("#avi-area");
 	let aviWidth = aviArea.offsetWidth;
 	let aviHeight = aviArea.offsetHeight;
-	let aviX = bodyArea.offsetLeft + aviArea.offsetLeft;
-	let aviY= bodyArea.offsetTop + aviArea.offsetTop;
+	let aviX = bodyX + aviArea.offsetLeft;
+	let aviY= bodyY + aviArea.offsetTop;
 
 	/* Option to download an avatar version of your doll (size is now customizable through CSS). It functions similarly to the other button, just with a different canvas size and x-y offsets */
 	$("#downloadAvi").on("click", function () {
