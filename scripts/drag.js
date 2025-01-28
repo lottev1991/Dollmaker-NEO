@@ -91,7 +91,7 @@ $(function () { /* Simplified this in order to future-proof the code */
 		return str.substr(str.lastIndexOf(sep) + 1);
 	}
 
-	/* Strips extension of file base name */
+	/* Strips extension of file basename */
 	function strip_extension(str) {
 		return str.substr(0, str.lastIndexOf('.'));
 	}
