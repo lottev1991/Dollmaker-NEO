@@ -22,20 +22,38 @@
 	Special thanks to @toohtik on GitHub for the visible child element fix! (https://github.com/toohtik)  -->
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lottev1991/html2canvas@1.6.5-custom/dist/html2canvas.min.js" crossorigin="anonymous"></script>
 
-	<!-- This is the drag-and-drop script (and pretty much everything else). -->
-	<script type="text/javascript" src="scripts/drag.js"></script>
+	<!-- This is the drag-and-drop script (and pretty much everything else). Commenting this out for production use is recommended. -->
+	<!-- <script type="text/javascript" src="scripts/drag.min.js"></script> -->
+	<!-- This is the minified version. Uncommenting this for production use is recommended. -->
+	<script type="text/javascript" src="scripts/drag.min.js"></script>
+
 </head>
 <?php
 $ignore = array(".", "..", ".htaccess", ".DS_Store");
-
+/* This function now also accepts creating buttons for removing an image. It is no longer restricted to backgrounds alone.
+To do this, just put the image button in the root folder of the clickable option.
+You can name the button anything you like. */
 function displayBase($path, $ignore) {
 	$images = scandir("$path/thumbnails");
+	$noneimg = scandir("$path"); // The button image that returns none should always go in the root folder
+	$ignorefol = array("full", "thumbnails"); //Exclude subfolders
+	// Defines "none"-buttons
+	foreach ($noneimg as $curimg) {
+		if (!in_array($curimg, $ignore) && !in_array($curimg, $ignorefol)) {
+			$filetitle = pathinfo($curimg, PATHINFO_FILENAME);
+			/* Replace specific characters to susbtitute characters PHP struggles with */
+			$find = ['-slash-', '``', '`',];
+			$replace = ['/', '"', "'"];
+			echo "<a href=\"\"><img src=\"$path/$curimg\" alt=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\" title=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\"></a>";
+		}
+	}
+	// Defines regular buttons that always return images
 	foreach ($images as $curimg) {
 		if (!in_array($curimg, $ignore)) {
 			$filetitle = pathinfo($curimg, PATHINFO_FILENAME);
 			$find = ['-slash-', '``', '`',];
 			$replace = ['/', '"', "'"];
-			echo "<a href=\"$path/full/" . $curimg . "\"><img src=\"$path/thumbnails/" . $curimg . "\" alt=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\" title=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\"></a>";
+			echo "<a href=\"$path/full/$curimg\"><img src=\"$path/thumbnails/$curimg\" alt=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\" title=\"" . str_replace($find, $replace, ltrim(basename($filetitle), '1234567890')) . "\"></a>";
 		}
 	};
 }
@@ -48,34 +66,35 @@ function displayBase($path, $ignore) {
 		<div id="bodyArea" class="ui-corner-all" title="Make your doll here.">
 			<?php
 			/* Find-and-replace options for variable names. */
-			$find = ['-slash-', '``', '`',];
-			$replace = ['/', '"', "'"];
-			/* Randomize default skin and eye colors. You can change these manually later if you want.
-			Things such as makeup, skin marks etc. I'd rather have as draggable items. */
-			$imageDir = 'base/Skintone/full/';
-			$images = glob($imageDir . '*.*', GLOB_BRACE);
-			$randomImage = $images[array_rand($images)];
-			$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
+			$ignore = array(".", "..", ".htaccess", ".DS_Store");
+			$statfol = "-static";  /* The "-static" suffix is for images you don't want to see randomized. Any folder that doesn't have this suffix will have randomized settings on page load (you can change them manually later). */
+			$find = ['-slash-', '``', '`', $statfol];
+			$replace = ['/', '"', "'", ''];
+			$cssfind = [' ', $statfol];
+			$cssreplace = ['-', ''];
+			$folders = scandir("base/");
+			foreach ($folders as $key => $curfol) {
+				if (!in_array($curfol, $ignore)) {
+					$key = $key - 1;
+					$imageDir = "base/$curfol/full/";
+					$images = glob($imageDir . '*.*', GLOB_BRACE);
+					$key = $key - 1;
+					$randomImage = $images[array_rand($images)]; /* Randomize relevant parts. You can change these manually later if you want. */
+					$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
+					// Different settings for static vs. randomized images
+					if (!str_contains($curfol, $statfol)) { // Random images
+						echo "<img id=\"" . ltrim(str_replace($cssfind, $cssreplace, $curfol), '1234567890') . "\" src=\"" . $randomImage . "\" alt=\"" . $filetitle ."\" title=\"" . $filetitle ."\" class=\"clickable\">\n";
+					} else { // Static non-randomized images
+						foreach ($images as $key => $curimg) {
+							if (!in_array($curimg, $ignore)) {
+								$key = $key - 1;
+								echo "<img id=\"" . ltrim(str_replace($cssfind, $cssreplace, $curfol), '1234567890') . "\" class=\"clickable\">\n";
+							}	
+						}	
+					}
+				}
+			}
 			?>
-			<img id="skintone" src="<?php echo ($randomImage); ?>" alt="The base body of the doll." title="The base body of the doll.">
-
-			<?php
-			$imageDir = 'base/LeftEye/full/';
-			$images = glob($imageDir . '*.*', GLOB_BRACE);
-			$randomImage = $images[array_rand($images)];
-			$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
-			?>
-			<img id="left-eye" src="<?php echo ($randomImage); ?>" alt="The left eye of the doll." title="The left eye of the doll.">
-
-			<?php
-			$imageDir = 'base/RightEye/full/';
-			$images = glob($imageDir . '*.*', GLOB_BRACE);
-			$randomImage = $images[array_rand($images)];
-			$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
-			?>
-			<img id="right-eye" src="<?php echo ($randomImage); ?>" alt="The right eye of the doll." title="The right eye of the doll.">
-			<!-- The doll background is transparent by default -->
-			<img id="doll-bg">
 			<!-- Avatar area, not visible on the document -->
 			<div id="avi-area"></div>
 		</div>
@@ -104,24 +123,24 @@ function displayBase($path, $ignore) {
 				<!-- Button to refresh the page, resetting all positions. -->
 				<button id="reset" alt="Click here to reset the dollmaker to its default settings." title="Click here to reset the dollmaker to its default settings.">Reset dollmaker</button>
 
-				<div id="bgSwitch">
-					<h3>Doll background:</h3>
-					<!-- No background by default -->
-					<a href=""><img src="base/Background/None.png" alt="No background" title="No background"></a>
-					<?php displayBase("base/Background", $ignore); ?>
-				</div>
-				<div id="skinSwitch">
-					<h3>Skintone:</h3>
-					<?php displayBase("base/Skintone", $ignore); ?>
-				</div>
-				<div id="leftEyeSwitch">
-					<h3>Left eye:</h3>
-					<?php displayBase("base/LeftEye", $ignore); ?>
-				</div>
-				<div id="rightEyeSwitch">
-					<h3>Right eye:</h3>
-					<?php displayBase("base/RightEye", $ignore); ?>
-				</div>
+				<?php 
+				/* We can now dynamically add switcher areas containing swatches to the page, which means we can now easily add any sort of swatches we want.
+				All the swatches are ordered by folder name, so it's good to put some numbers in the front of the folder name if you'd like to see them listed in a specific order. */
+				$folders = scandir("base/");
+				$ignore = array(".", "..", ".htaccess", ".DS_Store");
+				foreach ($folders as $key => $curfol) {
+					if (!in_array($curfol, $ignore)) {
+						$key = $key - 1;
+						$title = str_replace('-', ' ', rtrim(ltrim($curfol, '1234567890'), '-static'));
+						$div = str_replace(' ', '-', rtrim(ltrim($curfol, '1234567890'), '-static'));
+						echo "<div id=\"" . $div . "-switch\" class=\"switcher\">\n"; // The "switcher" class is so that the switchers can be easily found with JavaScript
+						echo "<h3>" . $title . ":</h3>\n";
+						echo displayBase("base/$curfol", $ignore);
+						echo "</div>\n";
+					}
+				}
+				?>
+				
 		</div>
 		<div id="piecesArea" alt="You can drag pieces from this area." title="You can drag pieces from this area.">
 			<?php
@@ -132,7 +151,6 @@ function displayBase($path, $ignore) {
 			foreach ($folders as $key => $curfol) {
 				if (!in_array($curfol, $ignore)) {
 					$curfol = str_replace($find, $replace, ltrim($curfol, '1234567890')) ;
-					/* Replace specific characters to susbtitute characters PHP struggles with */
 					$find = ['-slash-', '``', '`',];
 					$replace = ['/', '"', "'"];
 					$key = $key - 1;
