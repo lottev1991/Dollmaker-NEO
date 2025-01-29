@@ -23,7 +23,7 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lottev1991/html2canvas@1.6.5-custom/dist/html2canvas.min.js" crossorigin="anonymous"></script>
 
 	<!-- This is the drag-and-drop script (and pretty much everything else). Commenting this out for production use is recommended. -->
-	<!-- <script type="text/javascript" src="scripts/drag.min.js"></script> -->
+	<!-- <script type="text/javascript" src="scripts/drag.js"></script> -->
 	<!-- This is the minified version. Uncommenting this for production use is recommended. -->
 	<script type="text/javascript" src="scripts/drag.min.js"></script>
 
