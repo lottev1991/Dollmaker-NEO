@@ -18,7 +18,8 @@ body {
     color: #240060;
 }
 
-#page-header,#page-subheader, #page-header a, #page-subheader a {
+/* Use custom fonts for stuff that you wanna use it for */
+h1,h2,button,#page-header a,#page-subheader a {
     font-family: 'Pixelify Sans', sans-serif;
 }
 
