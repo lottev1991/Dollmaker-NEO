@@ -13,10 +13,9 @@ function toggleFullScreen() { /* Add full screen toggle. Mostly did this for mob
 
 /* Change the CSS of the cloned doll element.
 Basically, this function makes it so that the doll has a transparent background upon export (if no background has been selected that is).
-This no longer affects the actual doll area itself, so you don't have to worry about flashes anymore.
-(You can remove the "#bodyArea > img" part if you want the rounded corners to remain in all clickable images.) */
+This no longer affects the actual doll area itself, so you don't have to worry about flashes anymore. */
 function prepareDoll(clone) {
-	$(clone).find('#bodyArea, #piecesArea > div, #bodyArea > img').css({
+	$(clone).find('#bodyArea, #piecesArea > div').css({
 		"background-color": "transparent",
 		"border": "0",
 		"border-radius": "0",
@@ -55,11 +54,12 @@ $(function () { /* Simplified this in order to future-proof the code */
 		tolerance: "touch", /* Accept any part of a draggable piece, rather than only the center */
 		drop: function (event, ui) {
 			//this is so that the element "sticks" even when tab is changed.
-			ui.draggable.addClass("draggedout");
+			ui.draggable.css("visibility", "visible");
 		},
 		//changes current tab to the tab the piece belongs to when dragged out of body area
 		out: function (event, ui) {
-			ui.draggable.removeClass("draggedout");
+			//ui.draggable.css("visibility", "");
+			ui.draggable.css("visibility", "");
 			var whichTab = ui.draggable.parent().index() - 1; /* Had to change the ID attribute to an index, since that's how it works in jQuery UI nowadays.
 			Since the tab index is zero-based, I had to pass -1 for it to work correctly (it seems to be 1-based by default in jQuery?).
 			Also, the "select" function got renamed to "active" in jQuery UI v1.9 (notice a pattern? lol), which is why it's called that here.

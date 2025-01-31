@@ -13,11 +13,6 @@
   width: 100%;
 }
 
-.draggedout {
-  visibility: visible;
-  position: absolute;
-}
-
 /*------------------------------------------------*/
 
 /* General HTML stylings */
@@ -117,16 +112,20 @@ h1, h2, h3, h4, h5, h6 {
   top: 0px;
   width: 249px;
   height: 400px;
-  z-index: 0;
   text-align: center;
+}
+
+/* The background for your doll (NOT the entire dollmaker! This will be part of your exported doll and fits neatly inside the doll frame). */
+#Doll-background {
+  inset: 0px; /* Set all positions to 0, since the background should be the same width and height as the final doll */
+  position: absolute;
 }
 
 /* Position of the base body elements*/
 #Skintone {
   margin: 55px 0 0 0;
   z-index: 0;
-  position: absolute;
-  left: 69px;
+  position: relative;
 }
 
 /* I separated the customization for the left and right eyes, so you can easily create odd-eyed dolls with any combination of colors and shapes. */
@@ -142,14 +141,6 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 78px;
   right: 109px;
-}
-
-/* The background for your doll (NOT the entire dollmaker! This will be part of your exported doll and fits neatly inside the doll frame). */
-#Doll-background {
-  z-index: -1; /* Place the doll background behind all other images */
-  inset: 0px; /* Set all positions to 0, since the background should be the same width and height as the final doll */
-  position: absolute;
-  border-radius: 5px;
 }
 
 /* Customize the avatar dimensions here. The avatar div isn't actually visible on the document, although it is technically there on the page. */
@@ -223,7 +214,11 @@ h1, h2, h3, h4, h5, h6 {
 /* Draggable pieces CSS */
 .ui-draggable {
   user-select: none; /* Makes it so that draggable pieces aren't selectable even when not dragged (I personally find it annoying when that happens) */
-  cursor:pointer;
+  cursor: grab; /* Add grab cursor on hover */
+}
+
+.ui-draggable-dragging {
+  cursor:grabbing; /* Add grabbing cursor on dragging */
 }
 
 /*The area with divs in the middle that contains all the draggable pieces*/
