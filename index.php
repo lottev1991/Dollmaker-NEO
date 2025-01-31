@@ -67,11 +67,11 @@ function displayBase($path, $ignore) {
 			<?php
 			/* Find-and-replace options for variable names. */
 			$ignore = array(".", "..", ".htaccess", ".DS_Store");
-			$statfol = "-static";  /* The "-static" suffix is for images you don't want to see randomized. Any folder that doesn't have this suffix will have randomized settings on page load (you can change them manually later). */
-			$find = ['-slash-', '``', '`', $statfol];
+			$randfol = "(random)";  /* The "-static" suffix is for images you don't want to see randomized. Any folder that doesn't have this suffix will have randomized settings on page load (you can change them manually later). */
+			$find = ['-slash-', '``', '`', $randfol];
 			$replace = ['/', '"', "'", ''];
-			$cssfind = [' ', $statfol];
-			$cssreplace = ['-', ''];
+			$cssfind = [" $randfol", ' '];
+			$cssreplace = ['', '-'];
 			$folders = scandir("base/");
 			foreach ($folders as $key => $curfol) {
 				if (!in_array($curfol, $ignore)) {
@@ -82,7 +82,7 @@ function displayBase($path, $ignore) {
 					$randomImage = $images[array_rand($images)]; /* Randomize relevant parts. You can change these manually later if you want. */
 					$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
 					// Different settings for static vs. randomized images
-					if (!str_contains($curfol, $statfol)) { // Random images
+					if (str_ends_with($curfol, $randfol)) { // Randomized images
 						echo "<img id=\"" . ltrim(str_replace($cssfind, $cssreplace, $curfol), '1234567890') . "\" src=\"" . $randomImage . "\" alt=\"" . $filetitle ."\" title=\"" . $filetitle ."\" class=\"clickable\">\n";
 					} else { // Static non-randomized images
 						foreach ($images as $key => $curimg) {
@@ -116,7 +116,7 @@ function displayBase($path, $ignore) {
 				<!-- Button to download the finished doll. -->
 				<button id="downloadDoll" alt="Click here to download your finished doll." title="Click here to download your finished doll.">Download doll</button>
 				<!-- Button to download a 100x100 avatar of the doll. Make sure to change the dimensions listed if you changed them in the CSS.  -->
-				<button id="downloadAvi" alt="Click here to download a 100x100 avatar of your doll."title="Click here to download a 100x100 avatar of your doll.">Download avatar (100x100)</button>
+				<button id="downloadAvi" alt="Click here to download a 100x100 avatar of your doll." title="Click here to download a 100x100 avatar of your doll.">Download avatar (100x100)</button>
 
 				<!-- Button to toggle fullscreen. -->
 				<button id="fullscreen" alt="Click here to toggle between fullscreen and windowed mode. (On desktop, you can also press F11.)" title="Click here to toggle between fullscreen and windowed mode. (On desktop, you can also press F11.)" onclick="toggleFullScreen()">Toggle fullscreen</button>
@@ -131,9 +131,13 @@ function displayBase($path, $ignore) {
 				foreach ($folders as $key => $curfol) {
 					if (!in_array($curfol, $ignore)) {
 						$key = $key - 1;
-						$title = str_replace('-', ' ', rtrim(ltrim($curfol, '1234567890'), '-static'));
-						$div = str_replace(' ', '-', rtrim(ltrim($curfol, '1234567890'), '-static'));
-						echo "<div id=\"" . $div . "-switch\" class=\"switcher\">\n"; // The "switcher" class is so that the switchers can be easily found with JavaScript
+						$find_id = [' (random)', ' '];
+						$replace_id = ['', '-'];
+						$find_title = [' (random)'];
+						$replace_title = [''];
+						$id = str_replace($find_id, $replace_id, ltrim($curfol, '1234567890'));
+						$title = str_replace($find_title, $replace_title, ltrim($curfol, '1234567890'));
+						echo "<div id=\"" . $id . "-switch\" class=\"switcher\">\n"; // The "switcher" class is so that the switchers can be easily found with JavaScript
 						echo "<h3>" . $title . ":</h3>\n";
 						echo displayBase("base/$curfol", $ignore);
 						echo "</div>\n";
