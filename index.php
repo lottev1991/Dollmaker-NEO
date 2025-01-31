@@ -67,7 +67,7 @@ function displayBase($path, $ignore) {
 			<?php
 			/* Find-and-replace options for variable names. */
 			$ignore = array(".", "..", ".htaccess", ".DS_Store");
-			$randfol = "(random)";  /* The "-static" suffix is for images you don't want to see randomized. Any folder that doesn't have this suffix will have randomized settings on page load (you can change them manually later). */
+			$randfol = "(random)";  /* The "(random)" suffix is for images you don't want to see randomized. Any folder that doesn't have this suffix will have randomized settings on page load (you can change them manually later). */
 			$find = ['-slash-', '``', '`', $randfol];
 			$replace = ['/', '"', "'", ''];
 			$cssfind = [" $randfol", ' '];
