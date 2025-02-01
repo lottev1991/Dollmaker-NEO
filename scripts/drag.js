@@ -25,17 +25,19 @@ function prepareDoll(clone) {
 /* These are needed for the tab functionality and drag/drop functionality to work
 Based on the removed jQuery UI "ui-tabs-hide" class. I moved the setting here so that users don't have to manually define a CSS class.
 This class is no longer in jQuery UI as of v1.9, but I brought it back (in my own way) specifically for the dollmaker.
-This is to set inactive tabs to "visibility: hidden" and "display: block" instead of "display: none" upon switching, to preserve dragged-out items. */
+This is to set inactive tabs to "visibility: hidden" instead of "display: none" upon switching, to preserve dragged-out items. */
 (function ($) {
 	$.fn.invisible = function () {
-		return this.each(function () {
-			this.style.cssText = "visibility: hidden; display: block !important;"; /* The display setting is to overwrite the default "display: none" functionality of the current tab hiding functionality.
-  			WARNING: Do NOT remove the "!important" tag! Otherwise it will not work (trust me, I've tested it). */
+		return this.each(function () { /* The "display" setting is to overwrite the default "display: none" functionality of the current tab hiding functionality. */
+			$(this).css({
+				"visibility": "hidden",
+				"display": "", /* We're removing the "display" property so that it's no longer hidden and uses the automatic display instead */
+			});
 		});
 	};
 	$.fn.visible = function () {
 		return this.each(function () { /* Revert back to default on tab switch */
-			this.style.cssText = "";
+			$(this).removeAttr("style");
 		});
 	};
 }(jQuery));
@@ -58,7 +60,6 @@ $(function () { /* Simplified this in order to future-proof the code */
 		},
 		//changes current tab to the tab the piece belongs to when dragged out of body area
 		out: function (event, ui) {
-			//ui.draggable.css("visibility", "");
 			ui.draggable.css("visibility", "");
 			var whichTab = ui.draggable.parent().index() - 1; /* Had to change the ID attribute to an index, since that's how it works in jQuery UI nowadays.
 			Since the tab index is zero-based, I had to pass -1 for it to work correctly (it seems to be 1-based by default in jQuery?).
@@ -206,4 +207,3 @@ $(function () { /* Simplified this in order to future-proof the code */
 		});
 	});
 });
-
