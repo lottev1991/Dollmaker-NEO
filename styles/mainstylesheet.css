@@ -148,7 +148,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 100px;
   height: 100px;
   top: 35px;
-  left: 73px;
+  left: 0; /* These "left", "right* and "margin" settings combined will center an absolutely-positioned div */
+  right: 0;
+  margin: auto;
   position: absolute;
   visibility: hidden; /* DON'T use "display: none" here, it will completely hide the element and throw an error. */
 }
