@@ -19,6 +19,7 @@
 html {
   image-rendering: pixelated; /* We are working with art assets, so we want the page to look pixelated even on zoom-in so the images will not blur. This also helps with canvas rendering (now for real because of my custom html2canvas fork). */
   scroll-behavior: smooth; /* To scroll slowly while dragging, rather than shifting quickly all over the place */
+  touch-action: initial;
 }
 
 /*General body styles. Change to your own colors! */
