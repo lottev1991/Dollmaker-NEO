@@ -44,7 +44,7 @@ This is to set inactive tabs to "visibility: hidden" instead of "display: none" 
 
 $(function () { /* Simplified this in order to future-proof the code */
 	//Makes the pieces draggable & sets options
-	$('#piecesArea').find('img').draggable({
+	$('#piecesArea img').draggable({
 		stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
 		distance: 0, /* I believe this has to do with mouse distance? */
 		containment: "document", /* Makes it so pieces don't get lost off the page while dragging them */
