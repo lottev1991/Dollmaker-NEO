@@ -15,7 +15,7 @@ function toggleFullScreen() { /* Add full screen toggle. Mostly did this for mob
 Basically, this function makes it so that the doll has a transparent background upon export (if no background has been selected that is).
 This no longer affects the actual doll area itself, so you don't have to worry about flashes anymore. */
 function prepareDoll(clone) {
-	$(clone).find('#bodyArea, #piecesArea > div').css({
+	$(clone).find('#bodyArea, #piecesArea div').css({
 		"background-color": "transparent",
 		"border": "0",
 		"border-radius": "0",
