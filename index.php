@@ -76,7 +76,6 @@ function displayBase($path, $ignore) {
 					$key = $key - 1;
 					$imageDir = "base/$curfol/full/";
 					$images = glob($imageDir . '*.*', GLOB_BRACE);
-					$key = $key - 1;
 					$randomImage = $images[array_rand($images)]; /* Randomize relevant parts. You can change these manually later if you want. */
 					$filetitle = pathinfo($randomImage, PATHINFO_FILENAME);
 					// Different settings for static vs. randomized images
