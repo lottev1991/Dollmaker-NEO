@@ -9,7 +9,7 @@
 	<!-- We are now using the latest versions of jQuery and jQuery UI! I managed to make tabs work the way I wanted them to, so I upgraded everything to keep things nice and up-to-date.
 	All of this has been tested and works 100% as it should (yes, it still does!). Only change these if you know what you're doing! -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.14.2/jquery-ui.min.js" integrity="sha256-mblSWfbYzaq/f+4akyMhE6XELCou4jbkgPv+JQPER2M=" crossorigin="anonymous"></script>
 
 	<!-- Use Touch Punch to make the drag & drop function resonsive to touch input.
 	We're using a more up-to-date fork now, maintained by RWAP software (https://github.com/RWAP). Special thanks to them! -->
