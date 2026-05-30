@@ -5,6 +5,7 @@
 This project is a fork of Ninique's original [Dollmaker script](https://github.com/ninique/Dollmaker-Script); I simply modernized and styled it. Special thanks to her, because if I hadn't looked at her code, I would've never learned PHP.
 
 ## New features
+- **!! NEW !!: Page template for Eleventy (Nunjuks format)** *(recommended for static web hosts)*. No more painstakingly manual adding off images to the static HTML page. Let Eleventy grab them from the folders and do the work for you. You can read the instructions [here](11ty/README.md).
 - **Responsive page layout**. The dollmaker's content is always centered, which means it will load nicely on phones and tablets, while still looking good on PC screens.
 - **Support for touch input**, which means you can also actually *play* with the dollmaker on your phone or tablet. This is done with the help of a more up-to-date fork of the [Touch Punch](https://github.com/RWAP/jquery-ui-touch-punch/) library.
 - **Exporting your finished doll as a PNG image**, with the help of [FileSaver.js](https://github.com/eligrey/FileSaver.js) and my custom fork of [html2canvas](https://github.com/lottev1991/html2canvas). No more manual screenshotting and pasting in a paint program!
@@ -21,7 +22,7 @@ Note that "old" in this case means "I liked these features *so* much, I decided 
 * **Drag & Drop dress up**, powered by jQuery and jQuery UI. The very core of dollmakers.
 - **Stacking of pieces**. This is a native component of jQuery UI. This basically means you can add pieces in any order to your doll, meaning you can layer them in any way you like.
 * **A nice tabbed layout**, which will make your dollmaker look neat, tidy and sorted. Perfect for larger projects!
-* **Easily adding new pieces to the page with PHP** *(recommended)*. You can also still do it with plain HTML of course, but *do* consider using PHP for your dollmaker! It will make your life a lot easier, trust me. (Please read "Testing and running your dollmaker locally" right below to see how to preview and test PHP files directly on your computer).
+* **Easily adding new pieces to the page with PHP** *(recommended if possible)*. You can also still do it with plain HTML of course (or use the provided Eleventy template), but *do* consider using PHP for your dollmaker if you can! It will make your life a lot easier, trust me (although Eleventy comes *very* close!). (Please read "Testing and running your dollmaker locally" right below to see how to preview and test PHP files directly on your computer).
 
 ## Testing and running your dollmaker locally
 For locally testing/running your dollmaker, the primary option I recommend is [XAMPP](https://www.apachefriends.org/) (which also happens to feature PHP as a part of it, so you won't need to install it separately). Unlike Ninique's original script, I do in fact recommend you run this on a localhost web server (for PHP this is necessary, but even if you prefer plain HTML you may want to consider it, at least if you want the image exporting feature to work properly). You can read more on the CORS policy [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (TL;DR: running certain scripts from your computer's filesystem is not always possible, due to security concerns).
@@ -30,7 +31,7 @@ An alternative way to run your dollmaker locally is to install [Visual Studio Co
 
 For editing JavaScript (and CSS, and HTML too), I definitely do recommend Visual Studio code though (or a different code editor if you prefer that), so I recommend you install it either way, even if you don't plan on live previewing PHP files with it. (*Never* use basic Notepad on Windows for programming tasks! Unless you *really* know what you're doing.)
 
-As for online testing, many web hosting providers already provide a so-called [LAMP-stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)), so unless you're a masochist like me and use a VPS for hosting, you likely won't need to set up anything special before you can upload the files. (Note that if you plan on using something like Neocities, you won't be able to use PHP.)
+As for online testing, many web hosting providers already provide a so-called [LAMP-stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)), so unless you're a masochist like me and use a VPS for hosting, you likely won't need to set up anything special before you can upload the files. (Note that if you plan on using something like Neocities, you won't be able to use PHP, but you *can* use the Eleventy template provided in the `11ty` folder.)
 
 ## Other stuff
 I've written down a *lot* of notes in the files provided with this fork, and I recommend you read them if you plan on making your own dollmaker. Some of them are pretty important! (*Especially* the ones related to html2canvas. That library will need quite a bit of "hacking" in order to work properly.)

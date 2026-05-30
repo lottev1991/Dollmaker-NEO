@@ -13,7 +13,7 @@
 
 	<!-- Use Touch Punch to make the drag & drop function resonsive to touch input.
 	We're using a more up-to-date fork now, maintained by RWAP software (https://github.com/RWAP). Special thanks to them! -->
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@rwap/jquery-ui-touch-punch@1.1.5/jquery.ui.touch-punch.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rwap/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js" crossorigin="anonymous"></script>
 
 	<!-- We're using FileSaver and html2canvas to save the finished doll as an image. -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" crossorigin="anonymous"></script>
