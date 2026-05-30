@@ -1,2 +1,5 @@
-
-/.vscode
+.vscode
+_site
+node_modules
+package.json
+*.yaml
