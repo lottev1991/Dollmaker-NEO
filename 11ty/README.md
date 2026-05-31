@@ -19,4 +19,4 @@ If everything went well, you should now have a perfectly working dollmaker!
 ### Step 4: Upload the files from the `_site` folder to your web host
 Since the output is purely static HTML, you *can* in fact use this on Neocities and similar web hosts. **Tip:** Don't copy the folder itself, but only its contents! (Unless you want it to be in a subfolder called `_site` for some reason.)
 
-As I've already said above, you'll need to re-run Eleventy every time you add new files to the folders, or if you've edited any (including the NJK template, CSS files, and/or JavaScript). After that, you'll need to upload the updated files to your web host again. But, at the very least you can easily add images in bulk.
+As I've already said above, you'll need to re-run Eleventy every time you add new files to the folders, or if you've edited any (including the NJK template and/or Eleventy-related JavaScript files). After that, you'll need to upload the updated files to your web host again. But, at the very least you can easily add images in bulk.
