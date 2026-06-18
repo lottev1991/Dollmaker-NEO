@@ -11,6 +11,7 @@
   padding: 5px;
   position: absolute;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /*------------------------------------------------*/
@@ -102,14 +103,14 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 915px;
   margin: auto;
   line-height: 1em;
-  left: 5px;
   background-color: transparent;
+  display: flex;
 }
 
 /*-------------------------------------------------------------------*/
 /* The box that contains the basebody */
 #bodyArea {
-  position: absolute;
+  position: relative;
   top: 0px;
   width: 249px;
   height: 400px;
@@ -161,8 +162,9 @@ h1, h2, h3, h4, h5, h6 {
 #swatchesArea { 
   position: absolute; 
   top: 415px;
-  width: 239px;
+  width: 249px;
   padding: 10px 5px 0px;
+  box-sizing: border-box;
 }
 
 /* individual links for thumbnails */
@@ -227,8 +229,10 @@ h1, h2, h3, h4, h5, h6 {
 /*The area with divs in the middle that contains all the draggable pieces*/
 #piecesArea {
   position: relative;
-  left: 264px;
-  width: 585px;
+  left: 10px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  margin: 10px;
 }
 
 /*Positioning for tabs area*/
