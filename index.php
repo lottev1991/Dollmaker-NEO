@@ -142,7 +142,7 @@ function displayBase($path, $ignore) {
 						$title = str_replace($find_title, $replace_title, ltrim($curfol, '1234567890'));
 						echo "<div id=\"" . $id . "-switch\" class=\"switcher\">\n"; // The "switcher" class is so that the switchers can be easily found with JavaScript
 						echo "<h3>" . $title . ":</h3>\n";
-						echo displayBase("base/$curfol", $ignore);
+						displayBase("base/$curfol", $ignore);
 						echo "</div>\n";
 					}
 				}
